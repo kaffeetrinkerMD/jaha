@@ -1,0 +1,68 @@
+/*object-oriented program*//*
+ * Standardhamster steht vor einem regelmäßigen Berg unbekannter Größe
+ * Aufgabe: Gipfel erklimmen und stehen bleiben
+ */
+void main() {
+
+	Hamster willi = Hamster.getStandardHamster();
+	
+	//	Blickrichtung auf den Berg ausrichten
+	aendereBlickrichtung( willi, 1 );
+	
+	
+	//	zum Berg laufen und den Berg erklimmen
+	// dabei die neue Reihe ermitteln und, wenn nötig, zurück kehren
+	int alteReihe = willi.getReihe();
+	vorwaertsRechtsNichtFrei( willi );
+	
+	while ( willi.getReihe() >= alteReihe ) {
+		
+		klippe( willi );
+		alteReihe++;
+	}
+}
+
+/*	Ende main()	************************************************************* */
+//	Blickrichtung aendern
+void aendereBlickrichtung( Hamster x, int richtung ) {
+	
+	while ( x.getBlickrichtung() != richtung ) {
+		x.linksUm();
+	}
+}
+
+//	Vorwaertsbewegung bis zu einem Hindernis
+void vorwaerts( Hamster x ) {
+	
+	while ( x.vornFrei() ) {
+		
+		x.vor();
+	}
+}
+
+//	Vorwaertsbewegung solange vorn frei und rechts nicht frei ist
+void vorwaertsRechtsNichtFrei( Hamster x ) {
+	
+	while ( x.vornFrei() ) {
+		aendereBlickrichtung( x, (x.getBlickrichtung()+1) % 4 );
+		if( !x.vornFrei() ) {
+			aendereBlickrichtung( x, (x.getBlickrichtung()-1) % 4 );
+			x.vor();
+		}
+	}
+}
+
+//	Klippe
+//	linksUm() -> hoch rechtsUm()
+void klippe( Hamster x ) {
+	
+	while ( !x.vornFrei() ) {
+		aendereBlickrichtung( x, (x.getBlickrichtung()-1) % 4 );
+		if( x.vornFrei() ) {
+			
+			x.vor();
+			aendereBlickrichtung( x, (x.getBlickrichtung()+1) % 4 );
+			x.vor();
+		}
+	}
+}

@@ -1,0 +1,10 @@
+/*class*/
+
+interface Iterator{
+
+    //	liefert das nächste Element einer Menge
+    public Object next();
+
+    //	liefert TRUE, falls in der Menge weitere Elemente enthalten sind
+    public boolean hasNext(Integer [] menge );
+}

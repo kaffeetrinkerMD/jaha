@@ -1,0 +1,24 @@
+/*object-oriented program*/
+/**
+ * der Hamster soll zu der Kachel laufen, auf der sich die meisten Koerner befinden
+ * die Kachel, auf der sich die meisten Koerner befinden, werden mit einem Objekt der Klasse Kachel ermittelt
+ */
+void main() {
+
+	//	Erzeugen eines KachelHamster (Klasse KachelHamster)
+	KachelHamster anton = new KachelHamster();
+	
+	//	Erzeugen eines Kachel-Objektes (Klasse Kachel)
+	Kachel volleKachel = new Kachel();
+	
+	//	für die Größe des Arrays benötigt: Anzahl aller verfügbaren Kacheln
+	int maxReihen = Territorium.getAnzahlReihen();
+	int maxSpalten = Territorium.getAnzahlSpalten();
+	
+	//	... die Initialisierung des Objektes Kachel als eindimensionales Array
+	//	kapselt die Informationen des zweidimensionalen Arrays
+	Kachel [] flaeche = new Kachel [ maxReihen * maxSpalten ]; 
+	
+	// welche Kachel hat die meisten Körner
+	int testReihe = volleKachel.getReihe();
+}

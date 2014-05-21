@@ -1,0 +1,23 @@
+/*class*/
+
+class KindHamster1 extends Hamster {
+        
+        KindHamster1( int r, int s, int b, int k ) {
+                
+                super( r, s, b, k );
+        }
+        
+        
+        void kehrt( ) {
+                
+                this.linksUm();
+                this.linksUm();
+        }
+        
+        public void vor() {
+        	
+        	//	führe das vor() der Basisklasse aus
+        	super.vor();
+        	super.vor();
+        }
+}

@@ -1,0 +1,12 @@
+/*class*/
+/**
+ * der Hamster bewegt sich eienen Schritt vor
+ */
+class Wettlauf02Eltern extends Hamster{
+      
+	
+	void rennen() {
+		
+		this.vor();
+	}
+}

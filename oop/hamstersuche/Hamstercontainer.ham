@@ -1,0 +1,79 @@
+/*class*/
+/**
+ * @author Kaffeetrinker
+ * @author Teetrinker
+ */
+class Hamstercontainer extends Hamster{
+	//	Klassenvariablen
+	int [] df;
+	
+	//	Konstruktor
+	Hamstercontainer( int dimension ) {
+		
+		//	Datenfeld erzeugen
+		this.df = new int [ dimension ];
+		
+		//	Datenfeld mit Objekten (Hamstern) füllen
+		int i;
+		for( i = 0; i < this.df.length; i++) {
+			
+			/*	im Datenfeld (df) mit dem Index 'i'	*/
+			this.df[i] = new Hamstersuche();
+			
+			/*	... gibt es jetzt einen Hamster df[i] in Reihe i mit einer zufälligen anuźahl von Körnern im Maul	*/
+			this.df[i].init( i, 0, Hamster.OST, this.df[i].zufallszahl( dimension ) );
+		}
+	}
+
+	//	Methoden
+	
+	/**
+	 * Methode sortiereFeld()
+	 * 
+	 * @param	integer-Datenfeld (zu sortierendes Datenfeld)
+	 * 
+	 * @return	integer-Datenfeld (sortiertes Datenfeld)
+	 */
+	int [] sortiereFeld( int [] feld  ) {
+
+		//		lokale Variablen
+		int i;
+		int j;
+		int temp;
+		int test_sort;
+
+		for(i  = 1; i < feld.length; i++) {
+
+			temp = feld [ i ];
+			j = i;
+			while ( j > 0 &&  feld [ j - 1 ]  > temp ) {
+
+				feld [ j ] = feld [ j - 1 ];	// hier findet der iegentliche Tausch statt
+				j--;
+			}
+			feld [ j ] = temp;
+		}
+		return feld;
+	}
+}
+
+/*class Hamstercontainer {
+	
+	//	Konstruktor
+	Hamstercontainer() {
+		
+		Hamstertausch anton [];
+	}
+	
+	void sortiereFeld( int [] feld ) {
+		
+		....
+	}
+	
+	Methodenaufruf im main erfolgt dann mittels:
+		
+		Hamstercontainer c = new Hamstercontainer();
+		 ... alle Hamster in das Datenfeld
+		 
+		 c.sortiereFeld();
+}*/

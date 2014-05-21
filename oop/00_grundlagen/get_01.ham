@@ -1,0 +1,27 @@
+/*object-oriented program*/
+
+void main() {
+    
+    //	der blaue Hamster bekommt einen Namen
+    Hamster willi = Hamster.getStandardHamster();
+    
+    //	der rote Hamster startet ganz links im Gang
+    Hamster caesar = new Hamster();
+    caesar.init(2,0,Hamster.OST,0);
+    
+    //	lass caesar zu willi laufen
+    while ( caesar.getSpalte() != willi.getSpalte() ) {
+    
+    	caesar.vor();
+    }
+    
+    //	ein dritter Hamster startet ganz rechts im Gang
+    Hamster dora = new Hamster();
+    dora.init(2,9, (willi.getBlickrichtung()+2) % 4, 0);
+    
+    //	lass dora zu willi laufen
+    while ( dora.getSpalte() != willi.getSpalte() ) {
+    
+    	dora.vor();
+    }
+}

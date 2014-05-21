@@ -1,0 +1,32 @@
+/*object-oriented program*/
+
+/**
+ * Magdeburg, 3./4. Mai 2014
+ * 
+ * gemeinsame Arbeit von Niels Liebau und Hilmar Kluschke
+ * 
+ * Buch: Objektorientierte Programmierung spielend gelernt
+ * Kapitel 8.16
+ * Aufgabe 5
+ * 
+ * In einem beliebig großen mauerlosen Territorium mit einer geraden Anzahl an Kacheln
+ * liegt auf der Hälfte der Kacheln kein Korn. Auf der anderen Hälfte liegt genau ein Korn.
+ * Ein Hamster, der auf Kachel (0/0) mit Blickrichtung OST
+ * und keinen Körnern im Maul erzeugt wird, soll diese Situation umkehren,
+ * d.h. am Ende seiner Arbeit soll auf allen anfangs leeren Kacheln genau ein Korn liegen
+ * und die anfangs mit einem Korn besetzten Kacheln sollen am Ende körnerlos sein
+ */
+void main() {
+
+    
+    TauschHamster anton = new TauschHamster( 0, 0, Hamster.OST, 0 );
+    
+    /*anton.sammleReihe( 0 );*/
+    anton.sammleRaum();
+    
+    anton.geheZumStart();
+    
+    anton.legeRaum();
+    
+    // Kommentar für GIT
+}

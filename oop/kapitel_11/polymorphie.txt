@@ -1,0 +1,102 @@
+Polymorphie und dynamisches Binden
+**************************************
+
+--> poly = viel, morphismus = Gestalt ==> Vielgestaltigkeit
+
+	--> unsere Objektvariablen können verschiedene Gestalten annehmen
+	
+	Wdh:	Hamster p = Hamster.getHamster();		// alles ohne Polymorphie
+				
+				Hamster p = new Mein Hamster();	//	die O-Variable p referenziert einen "MeinHamster"
+				
+				Hamster	p = new AndererHamster;	//	die O-Variable p referenziert jetzt einen "AndererHamster"
+				---------------				----------------------	
+					^									^
+					 |									 |
+					 |									 |
+				ObjektVariable			Objekt
+				vom Typ Hamster		vom Typ AndererHamster
+
+				-->	p kann auf alle Objekte von Klassen referenzieren, die von Hamster
+						abgeleitet sind
+
+*********************************************************************************
+*																																			*
+*	Polymorphie funktioniert ausschießlich innerhalb einer Vererbungshierarchie		*
+*	und dort auch nur vom Allgemeinen zum Speziellen bzw.										*
+*	von der Oberklasse zur Unterklasse bzw.																	*
+*	vom Typ zum Subtyp bzw.																							*
+*	von der Basisklasse zur abgeleiteten Klasse.															*
+*																																			*
+*********************************************************************************
+
+Java akzeptiert im Sinne der Polymethode, dasswir etwas "unsauber" mit den Datentypen arbeiten.
+
+	--> im Gegenzug muss Java Einschränkungen vornehmen
+	
+		-->	wenn PM eingesetzt wird, dann kann das ref. Objekt nur noch so verwendet werden,
+				als wäre es ein Objekt vom Datentyp der Objektvariable
+				
+		-->	alle Fähigkeiten des ref. Objektes, die über die Fähigkeiten des Datentyps der
+				Objektvariablen hinaus gehen
+				
+				*********************************
+				*	Einschränkung des Protokolls	*
+				*********************************
+				
+		-->	Hinweis:
+					Einschränkung des Protokolls bedeutet aber nicht, dass das ref. Objekt
+					seine (erweiterten) Fähikeiten komplett einbüßt.
+					Diese können über die O-Variablen nur nicht angesprochen werden.
+					
+		--> Beispiel
+		
+			//	PM im Einsatz
+			Hamster paul =new KindHamster1();
+			
+			Das Protokoll von KindHamster1 wird eingeschränkt auf das Protokoll von Hamster.
+			
+		-->	die Einschränkung des Protokolls möchte man "gelegentlich" wieder rückgängig machen
+		-->	dazu werden die expliziten Typumwandlungen (type cast) eingesetzt
+		-->	diese Typumwandlungen funktionieren wie folgt:
+				(a)	es existiert ein Objekt einer abgeleiteten Klasse
+				(b)	eine OVariable einer übergeordneten Klasse referenziert dieses Objekt
+						--> Polymporphier, Einschränkung
+						
+				(c)	dann kann das Objekt wieder voll nutzbar gemacht werden
+						(Aufhebung der Einschränkungen des Protokolls) durch einen (type cast)
+						
+		--> Beispiel
+				Hamster paul = new KindHamster1(0,0,1,0); --> KindHamster kann kehrt(),
+																									was nun leider nicht nutzbar ist
+																									
+				( (KindHamster1)  paul ).kehrt();		-->	hier wird unser eingeschränktes 
+																					Objekt wieder voll nutzbar
+				
+
+-   in abgeleiteten Klassen ist es möglich, Methoden der Basisklasse zu überschreiben
+        --> Überschreiben: Methoden haben gleiche Signatur (Basis- und abgeleitete Klasse), weisen aber unterschiedliche Funktionen auf
+        
+-   die JAVA - Laufzeitumgebung muss die Möglk. des Überschreibens bei der Ausführung berücksichtigen:
+        --> JRE muss beim Aufruf entscheiden, welche Version der (überschriebenen) Methode auszuführen ist
+        
+        Hamster willi = new Hamster();                              class KindHamster1 extends Hamster{
+        
+        Hamster paul = new KindHamster1()                               // vor() wird überschrieben
+                                                                        public void vor(){
+        willi.vor();    // das vor() der Klasse Hamster                       super.vor();
+        
+        paul.vor();     // das vor() der Klasse KindHamster1                  super.vor();
+                                                                        }
+                                                                    }
+    *************************************************************************************************************************                                                                   
+    *    >>> dynamisches Binden: es wird immer die Methode ausgeführt, die zu dem Objekt gehört, das referenziert wird <<<  *
+    *************************************************************************************************************************
+    
+                                    **************************************************************
+                                    **************************************************************
+                                    **                                                          **
+                                    **  Die Klasse aller Klassen in Java ist die Klasse Object  **
+                                    **                                                          **
+                                    **************************************************************
+                                    **************************************************************        

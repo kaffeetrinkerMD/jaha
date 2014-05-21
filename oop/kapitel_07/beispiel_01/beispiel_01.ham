@@ -1,0 +1,73 @@
+/*object-oriented program*/
+void main() {
+
+	//	ermittele die Spaltennummer der rechten oberen Ecke
+	int spalte = Territorium.getAnzahlSpalten() - 1;
+	
+	//	ermittele die maximale Reihennummer (für den Zeichenhamster)
+	int maxReihe = Territorium.getAnzahlReihen() - 1;
+	
+	//	wir benötigen einen "Merkzettel" für die Körner
+	int ziffer = 0;
+	
+	//	Objektvariable für den ZeichenHamster()
+	//	"null" -> Objekt ist noch nicht referenziert
+	//	ZeichenHamster ist die Elternklasse für nachfolgende ZeichenHamsterXYZ
+	//	ZeichenHamster1, ZeichenHamster2, ... ZeichenHamster9
+	//	(die Kindklassen können nur die entsprechenden Ziffern zeichnen
+	ZeichenHamster zeichner = null;
+	
+	//	durchlaufe alle Spalten von rechts nach links, bis eine Mauer gefunden wird
+	while ( ! Territorium.mauerDa( 0, spalte ) ) {
+		
+		//	ermittele die Anzahl der Körner (= ziffer) auf der Kachel
+		ziffer = Territorium.getAnzahlKoerner( 0, spalte );
+
+		//	... und erzeuge einen dazu passenden Hamster
+		if( ziffer == 0 ) {
+			zeichner = new ZeichenHamster( maxReihe, spalte );
+		}
+		
+		if( ziffer == 1 ) {
+			zeichner = new ZeichenHamster1( maxReihe, spalte );
+		}
+		
+		if( ziffer == 2 ) {
+			zeichner = new ZeichenHamster2( maxReihe, spalte );
+		}
+		
+		if( ziffer == 3 ) {
+			zeichner = new ZeichenHamster3( maxReihe, spalte );
+		}
+		
+		if( ziffer == 4 ) {
+			zeichner = new ZeichenHamster4( maxReihe, spalte );
+		}
+		
+		if( ziffer == 5 ) {
+			zeichner = new ZeichenHamster5( maxReihe, spalte );
+		}
+		
+		if( ziffer == 6 ) {
+			zeichner = new ZeichenHamster6( maxReihe, spalte );
+		}
+		
+		if( ziffer == 7 ) {
+			zeichner = new ZeichenHamster7( maxReihe, spalte );
+		}
+		
+		if( ziffer == 8 ) {
+			zeichner = new ZeichenHamster8( maxReihe, spalte );
+		}
+		
+		if( ziffer == 9 ) {
+			zeichner = new ZeichenHamster9( maxReihe, spalte );
+		}
+		
+		//	... und lasse den Hamster zeichnen
+		zeichner.zeichne();
+		
+		//	mache mit der nächsten Spalte weiter (von re nach li)
+		spalte --;
+	}
+}

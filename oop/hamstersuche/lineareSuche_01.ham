@@ -1,0 +1,29 @@
+/*object-oriented program*/
+/**
+ * @author Kaffeetrinker
+ */
+void main() {
+    
+	String string_1;
+	String string_2;
+	int position_int;
+	int position_string;
+	
+	// Datenfeld initieren und mit Werten füllen
+	LineareSuche intDF = new LineareSuche (5, 1); 
+	LineareSuche strDF = new LineareSuche(2, 2);
+	
+	//	Füllen des Datenfeld-Objektes
+	intDF.intFuellen( 100, 10 );
+	
+	string_1 = "Ich bin kein Profi!";
+	string_2 = "Ich bin ein blutiger Anfänger!";
+	
+	strDF.strFuellen( 0, string_1 );
+	strDF.strFuellen( 1, string_2 );
+	
+	//	Ermitteln der Position (Indexwert) des Suchwertes
+	position_int = intDF.lineareSuche( 130 );
+	position_string = strDF.lineareSuche( string_2 );
+	
+}

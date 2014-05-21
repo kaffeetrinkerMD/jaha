@@ -1,0 +1,33 @@
+/*class*/
+class FaulerHamster extends Hamster {
+
+	/**
+	 * eine Objektvariable als Attribut der Klasse FaulerHamster
+	 * -> Subobjekt
+	 */
+	Hamster knecht = null;
+
+	//	Konstruktoren
+	/**
+	 * Konstruktor, der auch gleich den Sub-Hamster erzeugt
+	 * r - Reihe / s - Spalte / b - Blickrichtung / k - Anzahl der Körner im Maul
+	 */
+	FaulerHamster( int r, int s, int b, int k  ) {
+		
+		//	den faulen Hamster initialisieren
+		this.init( r, s, b, k);
+		
+		//	einen "Knecht" - Hamster erzeugen und initialisieren
+		this.knecht = new Hamster();
+		this.knecht.init( r, s, b, k );
+	}
+
+	/*	Ende Konstruktoren	****************************************************	 */
+	
+	void lasseKnechtLaufen() {
+		
+		if( this.knecht.vornFrei() ) {
+			this.knecht.vor();
+		}
+	}
+}

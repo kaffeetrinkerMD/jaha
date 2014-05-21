@@ -1,0 +1,37 @@
+void main() {
+
+	// Größe des Territoriums ermitteln
+	int anzReihe  = Territorium.getAnzahlReihen();
+	int anzSpalte = Territorium.getAnzahlSpalten();
+	
+	// wir brauchen ein Feld voller Kacheln
+	Kachel [] flaeche = new Kachel[anzReihe * anzSpalte];
+	// .. und auf einer Kachel liegt die maximale Anzahl Körner
+	Kachel maxKachel  = new Kachel();
+	
+	// willi soll dann später zu der Kachel laufen, auf der die meisten Körner liegen
+	MeinHamster willi = new MeinHamster();
+	
+	// Index für unsere (Kachel-)Fläche
+	int i=0;
+	
+	// äußere Schleife durchläuft alle Reihen
+	for( int r=0; r < anzReihe ; r++ ) {
+		// innere Schleife durchläuft alle Spalten
+		for( int s=0; s < anzSpalte ; s++ ) {
+			
+			// erzeuge eine neue Kachel
+			flaeche[i] = new Kachel( r, s, Territorium.getAnzahlKoerner( r, s )); 
+			
+			// ... und schau gleich nach, ob auf dieser Kachel mehr Körner liegen
+			if( flaeche[i].vergleiche( maxKachel )) 
+				// ... falls ja, merken wir uns die Kachel (da müssen wir später hinlaufen)
+				maxKachel = flaeche[i];
+			
+			i++;			
+		}		
+	}
+	
+	// lauf willi! - lauf!
+	willi.geheZu( maxKachel );
+}

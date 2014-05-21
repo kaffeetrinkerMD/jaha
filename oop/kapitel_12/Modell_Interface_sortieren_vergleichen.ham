@@ -1,0 +1,33 @@
+/*class*/
+void bubbleSort(Hamster[] x ) {
+	//	sortiere Hamster
+	for
+		for
+			if(x[i] > x[i+1]) //	vergleiche Hamster
+	
+}
+
+void bubbleSort(Kachel[] k ) {
+	//	sortiere Kacheln
+	for
+		for
+			if(k[i] > k[i+1]) //	vergleiche Kachel
+	
+}
+
+void bubbleSort(Sonstwas[] y ) {
+	//	sortiere Sonstwas
+	for
+		for
+			if(x[i] > y[i+1]) //	vergleiche Sonstawas
+	
+}
+
+//	die LOESUNG !!!!
+void bubbleSort(Vergleichbar[] v ) {
+	
+	//	sortiere Vergleichbares
+	for
+		for
+			if(v[i].vergleiche(v[i+1]) > 0 )	//	verleiche Vergleichbares
+}

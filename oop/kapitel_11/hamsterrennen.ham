@@ -1,0 +1,32 @@
+/*object-oriented program*/
+void main() {
+	
+	Wettlauf rennen = new Wettlauf(3);
+	
+	KindHamster1 k1 = new KindHamster1( 0, 0, Hamster.OST, 0 );
+	
+	KindHamster2 k2 = new KindHamster2( 1, 0, Hamster.OST, 0 );
+	
+	EnkelHamster1 e1 = new EnkelHamster1( 2, 0, Hamster.OST, 0 );
+	
+	
+	/*
+	 * in den folgenden Zeilen entsteht die Polymorphie,
+	 * weil 3 Objekte hinzugefügt werden, die von der allgemeinen
+	 * Klasse Hamster abgeleitet sind
+	 * 
+	 * die Methode hinzufuegen wird polymorph() verwendet
+	 * 
+	 * eigentlich ist hinzufuegen() als Methode deklariert worden,
+	 * die Hamster-Objekte als Parameter übernimmt
+	 */
+	//	die drei Hamster nehmen am Wettlauf teil
+	rennen.hinzufuegen( k1 );	// ... übergeben eines KindHamster1
+	rennen.hinzufuegen( k2 );	// ... übergeben eines KindHamster2
+	rennen.hinzufuegen( e1 );	// ... übergeben eines EnkelHamster1
+	
+	// lauf! lauf!
+	
+	rennen.lauf();
+}
+        

@@ -1,0 +1,39 @@
+/*class*/
+class GefuelltesRechteckHamster extends RechteckHamster {
+
+	//	Konstruktor
+	GefuelltesRechteckHamster( int r, int s, int b, int k  ) {
+		
+		super( r, s, b, k );
+	}
+
+	// gefülltes Rechteck zeichnen
+	void zeichne() {
+
+		maxBreite = maxBreite();
+		maxHoehe = maxHoehe();
+		int i = maxHoehe / 2;
+		
+		while ( i > 0 ) {
+
+			zeichneBreite( maxBreite );
+
+			rechtsUm();
+			vor();
+			rechtsUm();
+			
+			zeichneBreite( maxBreite );
+			
+			linksUm();
+			vor();
+			linksUm();
+			
+			i--;
+		}
+		
+if( (maxHoehe % 2) > 0 ) {
+			
+			zeichneBreite( maxBreite );
+		}
+	}
+}

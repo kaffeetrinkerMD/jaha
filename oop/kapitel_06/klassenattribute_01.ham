@@ -1,0 +1,55 @@
+/*object-oriented program*/
+void main() {
+
+	SammelHamster anton = new SammelHamster();
+
+	SammelHamster berta = new SammelHamster(1, 0);
+
+	SammelHamster caesar = new SammelHamster(2, 0);
+
+	SammelHamster dora = new SammelHamster(3, 0);
+
+	SammelHamster emil = new SammelHamster(4, 0);
+
+	//	alle sammeln nacheinander ihre Reihe ab
+	
+
+	anton.sammle();
+	while ( anton.vornFrei() ) {
+
+		anton.vor();
+		anton.sammle();
+	}
+
+
+	berta.sammle();
+	while ( berta.vornFrei() ) {
+
+		berta.vor();
+		berta.sammle();
+	}
+
+
+	caesar.sammle();
+	while ( caesar.vornFrei() ) {
+
+		caesar.vor();
+		caesar.sammle();
+	}
+
+
+	dora.sammle();
+	while ( dora.vornFrei() ) {
+
+		dora.vor();
+		dora.sammle();
+	}
+	
+
+	emil.sammle();
+	while ( emil.vornFrei() ) {
+
+		emil.vor();
+		emil.sammle();
+	}	
+}

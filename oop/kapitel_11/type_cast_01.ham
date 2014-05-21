@@ -1,0 +1,18 @@
+/*object-oriented program*/
+void main() {
+
+        Hamster paul = new KindHamster1(0 ,0 , 1, 0);
+        
+        /*
+         * durch einen type cast wird paul wieder zu einem KindHamster1
+         */
+        ( ( KindHamster1 ) paul ).kehrt();
+        
+        /*
+         * durch einen type cast kann (Hamster) paul in einer anderenOVariablen
+         * vom Typ Kind gespeichert werden
+         * 
+         */
+        KindHamster1 karl = (KindHamster1) paul;
+}
+        

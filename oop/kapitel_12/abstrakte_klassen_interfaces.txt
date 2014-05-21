@@ -1,0 +1,93 @@
+Abstrakte Klassen und Interfaces
+================================
+
+KindHamster1 objektVariable = new KindHamster1();
+ojektVariable = new KindHamster2();  ==> FEHLER (nicht voneinander abgeleitete Klassen)
+
+--> neue Klasse ==> abstrakte Klasse
+                    ================
+                    -   die a.Klasse ist als unvollständig zu betrachten
+                    -   -> der Klasse fehlt die Implementierung der Methode rennen()
+                    -   werden Methoden einer Klasse lediglich deklariert, aber nicht deren Funktion
+                        vollständig implementiert, spricht man von einer abstrakten Methode
+                        
+                    -   abstrakte Methoden werden für den Compiler durch das Schlüsselwort <abstract> kenntlich gemacht 
+
+
+        *************************************************************************************************
+        *   Eine abstrakte Klasse ist eine Klasse, die mindestens eine abstrakte Methode enthält.       *
+        *   Der Bauplan der Klasse ist unvollständig. Eine Instantiierung von Objekten dieser Klasse    *
+        *   ist nicht möglich.                                                                          *
+        *************************************************************************************************
+        
+        abstract class KindHamster {
+            //
+            
+            abstract void rennen();         // es wird nur die Signatur festgelegt
+        }
+
+                            -------------------------
+                            |   KindHamster         |
+                            -------------------------
+                            |                       |
+                            |                       |
+                            -------------------------
+                            |   rennen()            |
+                            -------------------------
+                                |       |       |
+                                |       |       |
+                    ------------        |       -------------
+                    |                   |                   |
+-------------------------   -------------------------   -------------------------
+|   KindHamster1        |   |   KindHamster2        |   |   KindHamster3        |
+-------------------------   -------------------------   -------------------------
+|                       |   |                       |   |                       |
+|                       |   |                       |   |                       |
+-------------------------   -------------------------   -------------------------
+|   rennen()            |   |    rennen()           |   |   rennen()            |
+-------------------------   -------------------------   -------------------------
+
+    -   die Klasse "KindHamster ist abstrakt
+    -   sie deklariert nur die Methode rennen(), ohne diese direkt zu implementieren
+    -   die Methode rennen() wird in den Klassen KindHamster 1-3 implementiert
+    -   die Implementierung erfolgt erst in den konkreten, abgeleiteten Klassen
+        
+    -   KindHamster objektVariable = new KindHamster1();
+        objektVariable = new KindHamster2();
+        objektVariable = new KindHamster3();
+
+        
+Interfaces
+==========
+
+    -   sind Klassen, die ausschliesslich aus abstrakten Methoden bestehen
+    -   Interfaces werden mit dem Schlüselwort <interface> deklariert
+    
+    interface Vergleichbar() {
+        //  ...
+    }          
+    
+    -   die Methoden eines Interfaces brauchen nicht mehr als abstrakt gekennzeichnet werden,
+        da sie es durch die Defintion der Klasse automatisch sind
+        
+    interface Vergelichebar() {
+    
+        boolean vergleicheMit( Objekt o1, Objekt o2 );  //  ist abstarkt, obwohl nicht expl. als
+                                                            abstrakt deklariert
+    }
+    
+    -   eine Klasse kann ein Interface implementieren
+        d.h., dass sie alle Methoden des Interfaces implementieren muss
+    -   es ist erlaubt, dass eine Klasse mehr als ein Interface implementiert
+    
+    -   Interfaces spielen bei der Polymorphie und dem dynamischen Binden dann wieder eine wichtige Rolle
+    -   es gilt:
+            (1) eine Objektvariable vom Typ des Interfaces kann !jede! Klasse referenzieren
+            (2) bei dieser Polymorphie wird wiederum das Protokoll des refernzierten
+                Objektes beschränkt (Einschränkung der Signatur)
+                
+                =>  Zugriff ist nur möglich auf Methoden, die das Interface deklariert
+                
+    -   Vorteile
+            
+                      

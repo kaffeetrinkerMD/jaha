@@ -1,0 +1,18 @@
+/*class*/
+/**
+ * überschreibt die Methode, der Hamster legt zusätzlich ein Korn ab
+ */
+class Wettlauf02Enkel extends Wettlauf02Kind{
+      
+	
+	void rennen() {
+		
+		this.linksUm();
+		this.linksUm();
+		this.linksUm();
+		this.linksUm();
+		this.vor();
+		this.gib();
+		this.vor();
+	}
+}

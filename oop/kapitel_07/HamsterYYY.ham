@@ -1,0 +1,16 @@
+/*class*/
+
+/**
+ */
+
+class HamsterYYY extends HamsterXXX {
+
+	HamsterYYY() {
+		
+		int spieltKeineRolle = 100;
+		
+		//	absichtlich vergessen: den Konstruktor der Klasse HamsterXXX
+		//	aufzurufen --->	in diesem Fall passiert es dann automatisch,
+		//	dass der Standardkonstruktor der Klasse HamsterXXX aufgerufen wird
+	}
+}

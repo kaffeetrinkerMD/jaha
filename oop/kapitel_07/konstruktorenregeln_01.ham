@@ -1,0 +1,6 @@
+/*object-oriented program*/
+void main() {
+
+	HamsterY anton = new HamsterY( 1, 1);
+	
+}

@@ -1,0 +1,89 @@
+/*object-oriented program*/
+/**
+ * Bubblesort - Sortieren durch Aufsteigen
+ * 	-	Algorithmus, der vergleichsbasiert eine Liste von Elementen (auf-/absteigend)
+ * 		sortiert
+ * -	Prinzip des paarweisen Vergleichens "benachbarter" Elemente eines Datenfeldes
+ */
+void main() {
+	
+	//	ein ganzahliges Feld soll aufsteigend sortiert werden
+	int[] feld = new int [ 6 ];
+	
+	//	Initialisierung mit den Zahlen von 100 abwärts in 5er Schritten
+	int j = 30;
+	for( int i = 0; i < feld . length; i ++  ) {
+		 
+		feld[ i ] = j;
+		j = j - 5;
+	}
+		
+	//	nun lassen wir sortieren
+	//bubbleSort1( feld );
+	bubbleSort2( feld );
+}
+
+void bubbleSort1( int [] array ) {
+	
+	//	bubble me!
+	
+	//	äußere Schleife sorgt dafür, dass insgesamt
+	//	( n - 1 ) Durchläufe erfolgen (n = Anzahl der Elemente im Array)
+	for( int n = array.length; n > 1; n = n - 1  ) {
+		
+		//	die innere Schleife sorgt dafür, dass alle Elemente des Arrays
+		//	nacheinander mit ihrem jeweilgen Nachbarn vergleichen werden
+		//	i = 0 => beginne ganz links im Feld
+		//	i < n -1 => vergleiche bis einschließlich vorletztes und letztes Element
+		for( int i = 0; i < n-1; i = i + 1 ) {
+			
+			//	vertausche, falls die Sortierreihenfolge nicht passt
+			if( array[ i ]  > array[ i + 1 ] ) {
+				
+				int temp = array[ i ];
+				array[ i ] = array[ i + 1 ];
+				array[ i + 1 ] = temp;
+			}	//	Ende der if-schleife
+		}	//	Ende der inneren for-Schleife
+	}	//	Ender der äußeren for-Schleife
+}
+
+/**
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * funktioniert, aber keine Ahnung, warum im Schleifenkopf die Abbruchbedingung
+ * Array-Index < = der Feldlänge + 2 sein muss
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ */
+void bubbleSort2( int [] array ) {
+		
+		//	Feldlänge
+		int n = array . length;
+		boolean getauscht = false;
+		
+		//	debug
+		int m = 0;
+		
+		//	beim ersten Durchlauf fand noch keine Vertauschung statt,
+		// deshalb initialisierung der boolean-Variable <getauscht> mit false
+		do {
+			
+			getauscht = false;
+			n = array . length;
+			
+			for( int i = 0; i <= n+2; ++i ) {
+				
+				if( array[ i ]  > array[ i + 1 ] ) {
+					
+					int temp = array[ i ];
+					array[ i ] = array[ i + 1 ];
+					array[ i + 1 ] = temp;
+					getauscht = true;
+					
+				}	//	Ende der if-schleife
+				
+				n--;
+				//	debug
+				m = n+2;
+			}	//	Ende der for-Schleife
+		} while ( getauscht == true );
+	}

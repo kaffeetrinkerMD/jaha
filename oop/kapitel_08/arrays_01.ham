@@ -1,0 +1,36 @@
+/*object-oriented program*/
+void main() {
+
+	//	ein Feld der Größe 10 für ganze Zahlen
+	
+	//	deklarieren
+	int [ ] datenfeld;
+	
+	//	definieren
+	datenfeld = new int [ 10 ];
+	
+	//	ein Feld der Größe 10 für Hamtser
+	
+	//	deklarieren
+	Hamster [ ] kaefig;
+	
+	//	definieren
+	kaefig = new Hamster [ 10 ];
+	
+	//	Initialisierung des ganzzahligen Feldes
+	//	mit einer aufsteigenden Zahlenfolge (0 ... 9)
+	int i = 0;
+	while ( i < 10 ) {
+		
+		datenfeld [ i ] = i;
+		i++;
+	}
+	
+	//	Initialisierung des Hamtser - Käfigs
+	i = 0;
+	while ( i <10 ) {
+		
+		kaefig [ i ] = new Hamster();
+		i++;
+	}
+}

@@ -1,0 +1,17 @@
+/*object-oriented program*/// Funktionen mit Rückgabewert Objekt
+void main() {
+    
+    Hamster berta = erzeuge(1,1,Hamster.SUED);
+    Hamster caesar = erzeuge(2,1,Hamster.OST);
+}
+
+/*	Ende main() **************************************************************** */
+
+//	eine Funktion, die eine Referenz auf ein Objekt liefert
+Hamster erzeuge(int reihe, int spalte, int blickrichtung) {
+
+	Hamster x = new Hamster();
+	x.init(reihe, spalte, blickrichtung, 0);
+	
+	return x;
+}

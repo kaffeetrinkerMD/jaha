@@ -1,0 +1,40 @@
+/*object-oriented program*/
+void main() {
+        
+       Hamster [] kaefig = new Hamster[10];
+       
+       kaefig[0] = new Hamster();	//	in der ersten "Zelle" sitzt ein normaler Hamster
+       
+       kaefig[1] = new MeinHamster();	//	in der zweiten "Zelle" sitzt ein MeinHamster
+       
+       kaefig[2] = new KindHamster();
+       
+       kaefig[3] = new EnkelHamster();
+       
+       /*
+        * Einschränkung der Signatur (des Protokolls)
+        */
+       
+       kaefig[].vor();			//	ok
+       kaefig[].linksUm();		//	ok
+       kaefig[].nimm();			//	ok
+       
+       kaefig[1].rechtsUm();	//	falsch, weil kaefig vom Typ Hamster ist und
+       							//	Hamster können kein rechtsUm()
+       
+       /*
+        * durch ein Type-Cast kann auf die speziellen Fähigkeiten der Hamster wieder
+        * zugegriffen werden
+        */
+       
+       //	"zurückgewandeltes" Objekt vom Typ EnkelHamster1"
+       /*	Type-Cast		Hamster-Objekt		*/
+       ( ( EnkelHamster1 ) kaefig[3] ).rechtsUm();	//	richtig, falls EnkelHamster1 rechtsUm() kann
+       
+       /*						Type-Cast				*/
+       EnkelHamster1 enkel1 = ( EnkelHamster1 ) kaefig[3];
+       /*
+        * das Objekt ist das gleiche (kaefig[3]) --> war, ist und bleibt ein EnkelHamster1,
+        * hatte aber Einschraenkunegen der Signatur, weil es in einem Kaefig für Hamster sitzt
+        */
+}

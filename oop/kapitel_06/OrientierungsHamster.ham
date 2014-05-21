@@ -1,0 +1,108 @@
+/*class*/
+class OrientierungsHamster extends Hamster {
+
+	//	Variablen
+	int positionR = 0;
+	int positionS = 0;
+	int blickrichtung = 0;
+
+	//	Konstruktoren
+	OrientierungsHamster( int r, int s ) {
+		this.init( r, s, Hamster.NORD, 0);
+	}
+
+	/*	Ende Konstruktoren	****************************************************	 */
+
+	/**
+	 * Funktion prüft, ob auf dem Territorium links der aktuellen Position des
+	 * Hamsters sich ein Hindernis (Mauer oder Ende des Territoriums) befindet
+	 * 
+	 * Rückgabewert ist true / false
+	 * 
+	 */
+	boolean linksFrei() {
+		positionR = this.getReihe();
+		positionS = this.getSpalte();
+		blickrichtung = this.getBlickrichtung();
+		
+		if( blickrichtung == Hamster.NORD ) {
+			// dann ist Spaltenposition -1 wichtig
+			if( !Territorium.mauerDa( positionR, positionS - 1  )  ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		if( blickrichtung == Hamster.SUED ) {
+			// dann ist Spaltenposition +1 wichtig
+			if( !Territorium.mauerDa( positionR, positionS + 1  )  ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		if( blickrichtung == Hamster.OST ) {
+			// dann ist Reihenposition -- wichtig
+			if( !Territorium.mauerDa( positionR - 1, positionS  )  ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		if( blickrichtung == Hamster.WEST ) {
+			// dann ist Reihenposition +1 wichtig
+			if( !Territorium.mauerDa( positionR + 1, positionS  )  ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
+	}
+
+	boolean rechtsFrei() {
+		positionR = this.getReihe();
+		positionS = this.getSpalte();
+		blickrichtung = this.getBlickrichtung();
+
+		if( blickrichtung == Hamster.NORD ) {
+			// dann ist Spaltenposition +1 wichtig
+			if( !Territorium.mauerDa( positionR, positionS + 1  )  ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		if( blickrichtung == Hamster.SUED ) {
+			// dann ist Spaltenposition -1 wichtig
+			if( !Territorium.mauerDa( positionR, positionS - 1  )  ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		if( blickrichtung == Hamster.OST ) {
+			// dann ist Reihenposition +1 wichtig
+			if( !Territorium.mauerDa( positionR + 1, positionS  )  ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		if( blickrichtung == Hamster.WEST ) {
+			// dann ist Reihenposition -1 wichtig
+			if( !Territorium.mauerDa( positionR - 1, positionS  )  ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
+	}
+}

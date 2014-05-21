@@ -1,0 +1,53 @@
+/*class*/
+
+/**
+ * Aufgabe 8.16.5
+ * -	beliebig großes, mauerloses Territorium
+ * -	gerade Anzahl an Kacheln
+ * -	auf der einen Hälfte der Kachel liegen Koerner, die anderen sind leer
+ * -	Hamster auf (0,0), keine Koerner im Maul, Blickrichtung OST
+ * -	Aufgabe: leere alle vollen Kacheln, fülle alle leeren Kacheln
+ */
+
+class Koernertausch {
+    
+	//	Klasseneigenschaften
+	int reihe;
+	int spalte;
+	int maxReihen;
+	int maxSpalten;
+	
+	//	Konstruktor
+	Koernertausch( int r, int s ){
+		
+		this.reihe = r;
+		this.spalte = s;
+	}
+	
+	/**
+	 * Dimension des Territoriums ermitteln
+	 */
+	void dimensionTerritorium() {
+		
+		maxReihen = Territorium.getAnzahlReihen();
+		maxSpalte = Territorium.getAnzahlSpalten();
+	}
+	
+	/**
+	 * alle leeren Kacheln ermitteln und im Array speichern
+	 */
+	int leereKacheln() {
+		
+		int leereKachel = 0;
+		
+		//	äußere Schleife prüft Reihe
+	}
+	
+	/**
+	 * alle vollen Kacheln ermitteln und im Array speichern
+	 */
+	int volleKacheln() {
+		
+		int volleKachel = 0;
+	}
+}

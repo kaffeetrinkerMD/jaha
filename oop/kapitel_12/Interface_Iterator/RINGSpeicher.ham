@@ -1,0 +1,32 @@
+/*class*/
+
+class RINGSpeicher extends Speicher implements Iterator {
+
+    //	Klassenvariablen
+
+    //	Konstruktor
+    RINGSpeicher( Integer dimension ){
+
+        super(dimension);
+    }
+
+    //	liefert das nächste Element einer Menge
+    public Integer[] next(){
+
+        return this.df;
+    }
+
+    //	liefert TRUE, falls in der Menge weitere Elemente enthalten sind
+    public boolean hasNext( Integer [] menge ) {
+
+        int i = 0;
+
+        while(i < menge.length) {
+            if( menge[i] != 0 ){
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+}

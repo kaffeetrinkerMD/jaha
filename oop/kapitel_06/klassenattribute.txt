@@ -1,0 +1,18 @@
+Statische Klassenelemente, Klassenattribute
+
+Klassenattribute sind Eigenschaften, die einer Klasse zugeordnet werden
+und von allen Objekten (Instanzen) einer Klasse gemeinschaftlich verwendet werden.
+
+K-Attribute werden mit Hilfe des Schlüsselwortes < static > gebildet
+Beispiel:
+
+	class SammelHamster extends Hamster() {
+		
+		int meineGesammeltenKoerner; (ein Instanz-Attr., das jedes Objekt besitzt)
+		
+		static int alleGesammeltenKoerner = 0; ->	K-Attribut, das alle Objekte 
+													gemeinschaftlich benutzen
+	}
+
+K-Attribute werden direkt initialisiert, also ohne Verwendung eines
+Konstruktors

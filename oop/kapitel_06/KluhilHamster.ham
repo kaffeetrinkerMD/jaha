@@ -1,0 +1,102 @@
+/*class*/
+class KluhilHamster extends Hamster {
+
+	/*
+	 * Konstruktoren werden zur automatischen Objekterzeugung verwendet
+	 * und werden bei Objekterzeugung automatisch ausgeführt
+	 * K. können (wie Methoden) überladen werden
+	 */
+
+	//	Ein neuer Hamster würde in der linken oberen Ecke erscheinen
+	KluhilHamster() {
+
+		this.init( 0, 0, Hamster.OST, 0 );
+	}
+
+	//	ein neuer Hamster würde an den angegebenen Koordinaten erscheinen
+	KluhilHamster( int r, int s ) {
+
+		this.init( r, s, Hamster.OST, 0);
+	}
+
+	//	ein neuer Hamster würde basierend auf einem vorhandenen 
+	//	Hamster initialisiert (Kopie)
+	KluhilHamster( Hamster x ) {
+
+		this.init( x.getReihe(), x.getSpalte(), x.getBlickrichtung(), x.getAnzahlKoerner() );
+	}
+
+	/*	Ende Konstruktoren	************************************************* */
+
+	//	laufe in Reihe r
+	void laufeReihe( int r ) {
+
+		while ( this.getReihe() != r ) {
+
+			if( this.vornFrei() ) {
+				this.vor();
+			}
+		}
+
+	}
+
+	//	laufe in Spalte a
+	void laufeSpalte( int s ) {
+
+		while ( this.getSpalte() != s ) {
+
+			if( this.vornFrei() ) {
+				this.vor();
+			}
+		}
+	}
+
+	//	ändere die Blickrichtung auf Richtung ...
+	void aendereBlickrichtung( int b ) {
+
+		while ( getBlickrichtung() != b ) {
+
+			linksUm();
+		}
+	}
+
+	//	aendere die Blickrichtung in der Reihe in Richtung Ziel
+	void aendereBlickZumZielReihe( int start, int ziel ) {
+		
+		int blickrichtung = this.getBlickrichtung();
+		
+		if( start > ziel ) {
+
+			while ( blickrichtung  != Hamster.NORD ) {
+
+				this.linksUm();
+			}
+		} else if( start < ziel ) {
+
+			while ( blickrichtung  != Hamster.SUED ) {
+
+				this.linksUm();
+			}
+		}
+	}
+
+	//	aendere die Blickrichtung in der Spalte in Richtung Ziel
+	void aendereBlickZumZielSpalte( int start, int ziel ) {
+		
+		int blickrichtung = this.getBlickrichtung();
+		
+		if( start > ziel ) {
+
+			while ( blickrichtung  != Hamster.WEST ) {
+
+				this.linksUm();
+			}
+		} else if( start < ziel ) {
+
+			while ( blickrichtung  != Hamster.OST ) {
+
+				this.linksUm();
+			}
+		}
+	}
+}

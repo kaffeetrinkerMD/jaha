@@ -1,0 +1,43 @@
+/*class*/
+
+class AuskunftsHamster extends Hamster {
+	
+	
+	/*	http://www.angelikalanger.com/Articles/EffectiveJava/01.Equals-Part1/01.Equals1.html	*/
+	/*	http://www.angelikalanger.com/Articles/EffectiveJava/02.Equals-Part2/02.Equals2.html	*/
+	
+	/*
+	 * folgende Methoden der Klasse class Object immer überschreiben
+	 * (also immer in die eigene Klasse implementieren)
+	 */
+	
+	/**
+	 * Wir überschreiben toString der Klasse Object
+	 */
+	
+	public String toString() {
+		
+		String ausgabe = "";
+		
+		//	Position ausgeben
+		ausgabe = ausgabe + "Reihe: " + this.getReihe() + " Spalte: " + this.getSpalte();
+		
+		//	Blickrichtung ausgeben
+		ausgabe = ausgabe + " - Blickrichtung: ";
+		
+		String richtung = "Norden";
+		if( this.getBlickrichtung() == Hamster.OST )
+			richtung = " Osten";
+		if( this.getBlickrichtung() == Hamster.SUED )
+			richtung = "Süden";
+		if( this.getBlickrichtung() == Hamster.WEST )
+			richtung = "Westen";
+		
+		ausgabe = ausgabe + richtung;
+		
+		//	Körner im Maul ausgeben
+		ausgabe = ausgabe + " - Körner im Maul: " + this.getAnzahlKoerner();
+		
+		return ausgabe;
+	}
+}

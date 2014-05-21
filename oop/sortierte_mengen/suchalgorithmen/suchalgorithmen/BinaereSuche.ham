@@ -1,0 +1,101 @@
+/*class*/
+/**
+ * @author Kaffeetrinker
+ */
+class BinaereSuche extends Suche{
+
+	BinaereSuche( int size, int typ ) {
+		super( size, typ );
+	}
+	
+	/**
+	 * Methode binaerAlgorithmusInt() sucht den Indexwert (Position) eines bestimmten Suchwertes
+	 * 
+	 * @param	int suchwert als Suchwert im Datenfeld
+	 * 
+	 * @return	Indexwert (Position) des Suchwertes
+	 * @return	-1, wenn der Suchwert nicht im Datenfeld vorhanden ist
+	 */
+	int binaerAlgorithmusInt( int suchwert ) {
+		// lokale Variablen
+		int neuerBereichUnten;
+		int neuerBereichOben;
+
+		neuerBereichUnten = this.minIndex;
+		neuerBereichOben = this.maxIndex;
+
+		//		wenn der Suchwert den Werten des kleinsten oder des groessten Indexwertes entspricht,
+		//	braucht keine weitere Suche durchgeführt werden
+		if( this.intDatenfeld[ this.minIndex ] == suchwert ) {
+			return this.minIndex;
+		} else if( this.intDatenfeld[ this.maxIndex ] == suchwert ) {
+			return this.maxIndex;
+		}
+
+		while (neuerBereichUnten <= neuerBereichOben)   
+		{
+			this.position = neuerBereichUnten + ((neuerBereichOben - neuerBereichUnten) / 2); /* Bereich halbieren */
+
+			if (this.intDatenfeld[this.position] == suchwert) {
+
+				return this.position;	
+			}
+			else
+				if (this.intDatenfeld[this.position] > suchwert) {
+
+					neuerBereichOben = this.position - 1;     /* im unteren Abschnitt weitersuchen */	
+				}	/* end if */
+				else {
+
+					neuerBereichUnten = this.position + 1;      /* im oberen Abschnitt weitersuchen */	
+				}	/* end if */
+		}
+		return -1;
+	}
+
+	/**
+	 * Methode binaerAlgorithmusString() sucht den Indexwert (Position) eines bestimmten Suchwertes
+	 * 
+	 * @param	String zeichenkette als Suchwert im Datenfeld
+	 * 
+	 * @return	Indexwert (Position) des Suchwertes
+	 * @return	-1, wenn der Suchwert nicht im Datenfeld vorhanden ist
+	 */
+	int binaerAlgorithmusString( String suchwert ) {
+
+		// lokale Variablen
+		int neuerBereichUnten;
+		int neuerBereichOben;
+
+		neuerBereichUnten = this.minIndex;
+		neuerBereichOben = this.maxIndex;
+
+		//	wenn der Suchwert den Werten des kleinsten oder des groessten Indexwertes entspricht,
+		//	braucht keine weitere Suche durchgeführt werden
+		if( this.strDatenfeld[ this.minIndex ] == suchwert ) {
+			return this.minIndex;
+		} else if( this.strDatenfeld[ this.maxIndex ] == suchwert ) {
+			return this.maxIndex;
+		}
+
+		while (neuerBereichUnten <= neuerBereichOben)   
+		{
+			this.position = neuerBereichUnten + ((neuerBereichOben - neuerBereichUnten) / 2); /* Bereich halbieren */
+
+			if (this.strDatenfeld[this.position] == suchwert) {
+
+				return this.position;	
+			}
+			else
+				if (this.strDatenfeld[this.position] != suchwert) {
+
+					neuerBereichOben = this.position - 1;     /* im unteren Abschnitt weitersuchen */	
+				}	/* end if */
+				else {
+
+					neuerBereichUnten = this.position + 1;      /* im oberen Abschnitt weitersuchen */	
+				}	/* end if */
+		}
+		return -1;
+	}
+}

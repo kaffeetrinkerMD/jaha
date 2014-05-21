@@ -1,0 +1,101 @@
+/*class*/
+
+/**
+ * 
+ */
+
+
+
+class Kachel {
+	
+	int reihe;
+	int spalte;
+	int anzahlKoerner;
+	int flaeche;
+	
+	//	Konstruktoren
+	Kachel() {
+		
+		this.reihe = 0;
+		this.spalte= 0;
+		this.anzahlKoerner = 0;
+	}
+	
+	Kachel( int r, int s, int a ) {
+		
+		this.reihe = r;
+		this.spalte = s;
+		this.anzahlKoerner = a;
+	}
+	
+	/**
+	 * int r Reihe
+	 * int s Spalte
+	 * int a Anzahl Koerner auf Kachel
+	 * int f flaeche (Anzahl aller Kacheln im Territorium)
+	 */
+	Kachel( int f ) {
+		
+		this.flaeche = f;
+	}
+	
+	//	Zugriffsmethoden für die Eigenschaften
+	int getReihe() {
+		
+		return this.reihe;
+	}
+	
+	int getSpalte() {
+		
+		return this.spalte;
+	}
+	
+	int getAnzahlKoerner() {
+		
+		return this.anzahlKoerner;
+	}
+	
+	/**
+	 * Ermitteln, auf welcher Kachel die meisten Koerner liegen
+	 */
+	
+	int maxKachel() {
+		int maxReihen = Territorium.getAnzahlReihen();
+		int maxSpalten = Territorium.getAnzahlSpalten();
+		int i = 0;
+		
+		//	äußere Schleife prüft die Reihe
+		for( int r = 0; r < maxReihen; r++ ) {
+			
+			//	innere Schleife prüft die Spalten in der Reihe
+			for( int s = 0; s < maxSpalten; s++ ) {
+				
+				//	ein neues Array erzeugen
+				flaeche [ i ] = new Kachel [r, s, Territorium.getAnzahlKoerner( r, s ) ];
+				
+				if( flaeche [i].vergleiche( flaeche [i] ) ) {
+					
+					maxKachel = flaeche [i]; 
+				}	//	Ende if
+			}	//	Ende inneres for
+		}	//	Ende äußeres for
+		
+		return maxKachel;
+	}
+	
+	
+	/**
+	 * eine Vergleichsmethode, die zwei Kacheln nach der Anzahl der Koerner vergleicht
+	 * liefert TRUE, falls die Anzahl der Koerner auf der ersten Kachel
+	 * groesser ist, als die Anzahl der Koerner auf der Parameterkachel ist
+	 * 
+	 * z.B. eineKachel.vergleiche( andereKachel )
+	 * 
+	 * TRUE, falls die Anzahl der Koerner auf der "eineKachel" > Anzahl Koerner der "andereKachel"
+	 */
+	
+	boolean vergleiche( Kachel k ) {
+		
+		return this.anzahlKoerner > k.getAnzahlKoerner();
+	}
+}

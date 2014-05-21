@@ -1,0 +1,15 @@
+/*object-oriented program*/
+void main() {
+
+	//	anton hat !! immer !! seinen eigenen Knecht
+	ChefHamster anton = new ChefHamster();
+	
+	//	berta muss den Knecht erst noch einstellen
+	ChefHamster2 berta = new ChefHamster2();
+	
+	Hamster sam = new Hamster();
+	
+	berta.stelltAn( sam );
+	
+	sam.vor();
+}

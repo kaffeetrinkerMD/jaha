@@ -1,0 +1,377 @@
+/*class*/
+class GameOfLife extends Hamster {
+
+        /**
+         * Spielidee:
+         *      -       es gibt aktive und inaktive Zellen (Kacheln)
+         *      -       aktive Kacheln sind Kacheln, auf denen sich genau ein Korn befindet
+         *      -       inaktive Kacheln sind Kacheln, auf denen sich kein Korn befindet
+         *      -       jede Kachel kann aktiv bleiben
+         *      -       jede Kachel kann inaktiv werden
+         *      -       jede Kachel kann kann aktiv werden
+         * 
+         *      -       jede Kachel, die sich nicht am Rand des Spielfeldes (Territoriums) befindet,
+         *              hat 8 Nachbarn (ausgehend von Blickrichtung OST [1]):
+         *                      kachelNachbar1 -> aktuelle PositionReihe - 1, aktuellePositionSpalte
+         *                      kachelNachbar2 -> aktuelle PositionReihe - 1, aktuellePositionSpalte +1
+         *                      kachelNachbar3 -> aktuelle PositionReihe , aktuellePositionSpalte + 1
+         *                      kachelNachbar4 -> aktuelle PositionReihe +1, aktuellePositionSpalte +1
+         *                      kachelNachbar5 -> aktuelle PositionReihe +1, aktuellePositionSpalte
+         *                      kachelNachbar6 -> aktuelle PositionReihe +1, aktuellePositionSpalte -1
+         *                      kachelNachbar7 -> aktuelle PositionReihe, aktuellePositionSpalte -1
+         *                      kachelNachbar8 -> aktuelle PositionReihe - 1, aktuellePositionSpalte -1
+         * 
+         *      Regeln:
+         *              1.      für jede inaktive Kachel gilt: genau 3 Nachbarn -> wird zu einer aktiven Kachel
+         *              2.      für jede aktive Kachel gilt: weniger als 2 Nachbarn -> wird zu einer inaktiven Kachel
+         *              3.      für jede aktive Kachel gilt: mehr als 3 Nachbarn -> wird zu einer inaktiven Kachel
+         */
+
+        //      Eigenschaften
+        private int [] [] alleKacheln;
+        private int [] [] aktGeneration;
+        private int [] [] naechsteGeneration;
+        private int [] [] positionKaNachb1;
+        private int [] [] positionKaNachb2;
+        private int [] [] positionKaNachb3;
+        private int [] [] positionKaNachb4;
+        private int [] [] positionKaNachb5;
+        private int [] [] positionKaNachb6;
+        private int [] [] positionKaNachb7;
+        private int [] [] positionKaNachb8;
+        
+        // Anzahl aller Reihen und Spalten
+        int maxReihen = Territorium.getAnzahlReihen();
+        int maxSpalten = Territorium.getAnzahlReihen();
+        private int anzahlEcken;
+        private int maxKachelNachbarn;
+
+        private int groesseSpielfeld;
+        private int anzahlKoernerBeginn;
+
+        //      Konstruktor
+        GameOfLife() {
+
+
+                //      Groesse des Lebensraumes bestimmen (Anzahl der Kacheln)
+                this.groesseSpielfeld = ( Territorium.getAnzahlReihen() ) * ( Territorium.getAnzahlSpalten() );
+                this.anzahlKoernerBeginn = ( this.groesseSpielfeld * 2 ) / 3;
+
+                this.init( 0, 0, Hamster.OST, this.anzahlKoernerBeginn );
+                
+                this.anzahlEcken = 4;
+                this.maxKachelNachbarn = this.groesseSpielfeld * 8 - (this.anzahlEcken * 5) - ( (this.maxReihen - 2) * 3 ) - ( (this.maxSpalten - 2) * 3 );
+        }
+
+        /**
+         * bestimme Position Nachbar 1
+         * 
+         * @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return gibt ein eindimensionales Array zurueck mit reihe, spalte
+         */
+        int [] posNachbar1( int aktReihe, int aktSpalte ) {
+
+                int [] tempFeld;
+
+                tempFeld = new int [ 2 ];
+
+                tempFeld [ 0 ] = aktReihe - 1;
+                tempFeld [ 1 ] = aktSpalte;
+                return tempFeld;
+        }
+
+        /**
+         * bestimme Position Nachbar 2
+         * 
+         * @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return gibt ein zweidimensionales Array zurueck mit reihe, spalte
+         */
+        int []  posNachbar2( int aktReihe, int aktSpalte ) {
+
+                int [] tempFeld;
+
+                tempFeld = new int [ 2 ];
+
+                tempFeld [ 0 ] = aktReihe - 1;
+                tempFeld [ 1 ] = aktSpalte + 1;
+                return tempFeld;
+        }
+
+        /**
+         * bestimme Position Nachbar 3
+         * 
+         *  @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return gibt ein zweidimensionales Array zurueck mit reihe, spalte
+         */
+        int [] posNachbar3( int aktReihe, int aktSpalte ) {
+
+                int [] tempFeld;
+
+                tempFeld = new int [ 2 ];
+
+                tempFeld [ 0 ] = aktReihe;
+                tempFeld [ 1 ] = aktSpalte + 1;
+                return tempFeld;
+        }
+
+        /**
+         * bestimme Position Nachbar 4
+         * 
+         * @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return gibt ein zweidimensionales Array zurueck mit reihe, spalte
+         */
+        int [] posNachbar4( int aktReihe, int aktSpalte ) {
+
+                int [] tempFeld;
+
+                tempFeld = new int [ 2 ];
+
+                tempFeld [ 0 ] = aktReihe + 1;
+                tempFeld [ 1 ] = aktSpalte + 1;
+                return tempFeld;
+        }
+
+        /**
+         * bestimme Position Nachbar 5
+         * 
+         * @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return gibt ein eindimensionales Array zurueck mit reihe, spalte
+         */
+        int [] posNachbar5( int aktReihe, int aktSpalte ) {
+
+                int [] tempFeld;
+
+                tempFeld = new int [ 2 ];
+
+                tempFeld [ 0 ] = aktReihe + 1;
+                tempFeld [ 1 ] = aktSpalte;
+                return tempFeld;
+        }
+
+        /**
+         * bestimme Position Nachbar 6
+         * 
+         * @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return gibt ein eindimensionales Array zurueck mit reihe, spalte
+         */
+        int [] posNachbar6( int aktReihe, int aktSpalte ) {
+
+                int [] tempFeld;
+
+                tempFeld = new int [ 2 ];
+
+                tempFeld [ 0 ] = aktReihe + 1;
+                tempFeld [ 1 ] = aktSpalte -1;
+                return tempFeld;
+        }
+
+        /**
+         * bestimme Position Nachbar 7
+         * 
+         * @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return gibt ein eindimensionales Array zurueck mit reihe, spalte
+         */
+        int [] posNachbar7( int aktReihe, int aktSpalte ) {
+
+                int [] tempFeld;
+
+                tempFeld = new int [ 2 ];
+
+                tempFeld [ 0 ] = aktReihe;
+                tempFeld [ 1 ] = aktSpalte -1;
+                return tempFeld;
+        }
+
+        /**
+         * bestimme Position Nachbar 8
+         * 
+         * @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return gibt ein eindimensionales Array zurueck mit [0] ->reihe, [1] -> spalte
+         */
+        int [] posNachbar8( int aktReihe, int aktSpalte ) {
+
+                int [] tempFeld;
+
+                tempFeld = new int [ 2 ];
+
+                tempFeld [ 0 ] = aktReihe - 1;
+                tempFeld [ 1 ] = aktSpalte -1;
+                return tempFeld;
+        }
+
+        /**
+         * Methode bestimmeNachbarn() ermittelt, welche Nachbarn eine bestimmte
+         * Kachel hat
+         * 
+         * @param aktReihe zur Bestimmung der aktuellen Reihe im Territotium
+         * @param aktSpalte zur Bestimmung der aktuellen Spalte im Territorium
+         * @return eindimensionales Array
+         */
+        int [] bestimmeNachbarn( int anzahlKaNachbarn, int maxReihen, int maxSpalten ) {
+
+                // lokale Variable - Array nimmt Nachbarn auf
+                int [][] nachbarKachel = new int [ anzahlKaNachbarn ];
+                //      Zaehlvariable deklarieren - Anzahl der Kacheln
+                int a;
+                //      Zaehlvariable- i(ndex)
+                int i = 0;
+                /*
+                 * Anzahl und Position der Nachbarn ist abhaengig von der Postion der Kachel
+                 * erster Eintrag im Array ist die Kachel mit der Startposition 0,0
+                 * letzter eintrag ist die Kachel mit der Endposition maxReihe, maxSpalte
+                 */
+                for( a = 0; a < anzahlKaNachbarn; a++  ) {
+
+                        //      aeussere Schleife (Reihen)
+                        //      Zaehlvariable - r(eihen)
+                        int r;
+                        for( r = 0; r < maxReihen; r++) {
+
+                                //      innere Schleife (Spalten)
+                                //      Zaehlvariable - s(palten)
+                                int s;
+                                for( s = 0; s < maxSpalten; s++  ) {
+
+
+                                        //      Fallunterscheidungen fuer Rand-Kachel und freie Kacheln
+                                        if( r == 0 && s == 0 ) {
+
+                                                //      linke, obere Ecke - Nachbarn 3,4,5
+                                                nachbarKachel[i] = posNachbar3( r, s );
+                                                i++;
+                                                nachbarKachel [i] = posNachbar4( r, s );
+                                                i++;
+                                                nachbarKachel [i] = posNachbar5( r, s );
+                                                i++;
+                                        }
+
+                                        if( r == 0 && s == (maxSpalten - 1)) {
+
+                                                //      rechte, obere Ecke - Nachbarn 5,6,7
+                                                this.nachbarKachel [i] = posNachbar5( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar6( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar7( r, s );
+                                                i++;
+                                        }
+                                        
+                                        if( r == (maxReihen - 1) && s == (maxSpalten - 1) ) {
+
+                                                //      rechte, untere Ecke - Nachbarn 7,8,1
+                                                this.nachbarKachel [i] = posNachbar7( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar8( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar1( r, s );
+                                                i++;
+                                        }
+                                        
+                                        if( r == (maxReihen - 1) && s == 0 ) {
+                                                
+                                                //      linke, untere Ecke - Nachbarn 5,6,7
+                                                this.nachbarKachel [i] = posNachbar1( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar2( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar3( r, s );
+                                                i++;
+                                        }
+                                        
+                                        if( r == 0 && !(s == 0) && !(maxSpalten - 1) ) {
+                                                
+                                                //     oberste Reihe, ohne Ecken - Nachbarn 3,4,5,6,7
+                                                this.nachbarKachel [i] = posNachbar3( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar4( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar5( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar6( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar7( r, s );
+                                                i++;
+                                        }
+                                        
+                                        if( r == 0 && !(s == 0) && !(maxSpalten - 1) ) {
+                                                
+                                                i = nachbarKachel.length + 1;
+                                                //     unterste Reihe, ohne Ecken - Nachbarn 3,4,5,6,7
+                                                this.nachbarKachel [i] = posNachbar3( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar4( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar5( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar6( r, s );
+                                                i++;
+                                                this.nachbarKachel [i] = posNachbar7( r, s );
+                                                i++;
+                                        }
+                                        
+                                        //      alle anderen Reihen
+                                        if( r > 0 && r < ( maxReihen - 1 )  ) {
+                                                
+                                                //       alle linken Rand-Kacheln - Nachbarn 1,2,3,4,5
+                                                if( s== 0 ) {
+                                                        
+                                                        i = nachbarKachel.length + 1;
+                                                        this.nachbarKachel [i] = posNachbar1( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar2( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar3( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar4( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar5( r, s );
+                                                        i++;
+                                                } else if( s == (maxSpalten - 1) ) {
+                                                        
+                                                        i = nachbarKachel.length + 1;
+                                               //       alle rechten Rand-Kacheln - Nachbarn 5,6,7,8,1 
+                                                        this.nachbarKachel [i] = posNachbar5( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar6( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar7( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar8( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar1( r, s );
+                                                        i++;
+                                                } else {
+                                                        
+                                                        i = nachbarKachel.length + 1;
+                                                        //      alle anderen (freien) Kacheln
+                                                        this.nachbarKachel [i] = posNachbar1( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar2( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar3( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar4( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar5( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar6( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar7( r, s );
+                                                        i++;
+                                                        this.nachbarKachel [i] = posNachbar8( r, s );
+                                                        i++;
+                                                }
+                                        }
+                                }       //      Ende innere for-Schleife
+                        }       //      Ende aeussere for-Schleife
+                }
+        }
+}

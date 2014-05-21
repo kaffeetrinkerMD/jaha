@@ -1,0 +1,11 @@
+Arrays (mehrdimensionale Datenfelder)
+------------------------------------------------------
+-	mehrdimensionale Arrays sind in Java möglich
+-	meistens werden zweidimensionale Felder verwendet
+-	die Deklaration und Definition eines mehrdimensionalen Feldes erfolgt durch zusätzliche
+	Indexangaben:
+	
+		int [] feld = new int [ 10 ];
+		int [] [] feld = new int [ 10 ] [ 10 ];
+		int [] [] [] feld = new int [ 10 ] [ 10 ] [ 10 ];
+	

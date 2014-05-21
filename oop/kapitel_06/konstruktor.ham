@@ -1,0 +1,10 @@
+/*object-oriented program*/
+void main() {
+
+	KluhilHamster willi = new KluhilHamster();
+	
+	KluhilHamster paul = new KluhilHamster(1, 1);
+	
+	KluhilHamster hilmar = new KluhilHamster( willi );
+	
+}

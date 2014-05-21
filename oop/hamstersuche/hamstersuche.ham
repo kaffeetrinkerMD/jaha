@@ -1,0 +1,32 @@
+/*object-oriented program*/
+/**
+ * @author Kaffeetrinker
+ * @author Teetrinker
+ */
+void main() {
+    
+	int anzReihen;
+	
+	anzReihen = Territorium.getAnzahlReihen();
+	
+	//	Datenfeld deklarieren
+	/*Hamstersuche [] anton = new Hamstersuche[anzReihen];*/
+	Hamstercontainer [] anton = new Hamstercontainer[ anzReihen ];
+	/*
+	int i;		Index-Zählvariable	
+	//	Datenfeld mit Hamstern füllen und im Territorium initialisieren
+	for( i = 0; i < anton.length; i++) {
+		
+			im Datenfeld (anton) mit dem Index 'i'	
+		anton[i] = new Hamstersuche();
+		
+			... gibt es jetzt einen Hamster anton[i] in Reihe i mit einer zufälligen anuźahl von Körnern im Maul	
+		anton[i].init( i, 0, Hamster.OST, anton[i].zufallszahl( anzReihen ) );
+	}*/
+	
+	/*
+	 * Datenfeld anton muss sortiert werden
+	 * Sortierkriterium ist Anzahl der Körner im Maul - aufsteigend
+	 */
+	/*int [] antonSortiert = sortiereFeld( anton );*/
+}

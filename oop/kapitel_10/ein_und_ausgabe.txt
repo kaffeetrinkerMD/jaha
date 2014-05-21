@@ -1,0 +1,110 @@
+Ein- und Ausgabe
+*****************
+
+	-	in der Hamstesimulation wird die augabenstellung durch das Territorium und
+		die Hamsterkonfiguration/-prgrammierung vorgegeben und gelöst
+		
+	-	weitere Möglichkeiten zur Programmsteuerung durch Benutzereingaben zur
+		Laufzeit des Programms bestehen bislang nicht
+		
+	-	die Zeichenketten stellen einen leistungsfähigen Datentyp für die Ein- und Ausgaben
+		dar
+		
+			Zeichenkette (engl) --> string --> die Klassen in Java: String
+			
+	-	Zeichenkettenliterale/Stringliterale dienen der Wertfestlegung
+	
+		"Hallo Welt" ... ZK-Literale werden in Anführungszeichen geschrieben
+		
+		Bsp:		String str = "Hallo Welt";
+		
+	Besonderheiten bei ZK-Literalen:
+	
+		1.	sind die Anführungszeichenzeichen selber Bestandteil der ZK,
+			müssen diese entschärft (geqoutet) werden:
+				" \"Hallo Welt!\" sagte er."
+				
+		2.	der Backslash selbst ist nun als Entschärfungszeichen selber wieder
+			zu entschärfen:
+				" \\"Hallo Welt!\\" sagte er."
+				
+		3.	die leere ZK ist:
+				""
+				
+				eine 
+				ZK mit einem Leerzeichen ist keine leere ZK!
+				
+	Objekte vom Typ String
+	
+		String zeichenkette1 = new String("Hallo");
+		String zeichenkette2 = new String("Welt");
+		
+		String zeichenkette3 = new String("Hallo");
+		
+		String [] zeichenkettenFeld = new String [ 10 ];
+		zeichenkettenFeld [ 0 ] = new String ("Hallo");			oder auch mgl
+		zeichenkettenFeld [ 1 ] = "Hallo Welt";
+		
+		ZK - Rechenoperationen:
+		
+			String str1 = new String("Hallo");
+			String str2 = new String("Welt");
+			
+			String summe = str1 + str2; //	die Summe ist das Verketten(aneinanderhängen) von ZK
+			
+			String text = str1 + " " + str2 + "!";
+			
+		das Vergleichen von ZK läuft anders, als bei primitiven Datentypen
+				boolean  x = true;
+				boolean  y = true;
+				
+				if( x == y )
+					...
+					
+		falsche Annahme:
+			
+				String str1 = "Hallo";
+				String str2 = "Hallo";
+				
+				if( str1 == str2 )		dieser Vergleich ist NICHT WAHR
+				
+		richtig:
+		
+			str1.equals( str2 )		dieser Vergleich führt zu einer wahren Aussage
+			
+			(equals ist eine Methode in Java) --> equals()
+			
+Ausgaben im Hamstersimulator
+*******************************
+
+in die Klasse Hamster wurde die Methode void schreib( String zeichenkette) definiert.
+
+	Hamster anton = Hamster.getStandardHamster();
+	
+	anton.schreib( "Hallo Welt!" );
+	
+	anton.schreib( "ich habe" + anton.getAnzahlKoerner() + " Koerner im Maul" );
+	
+Eingabe im Hamstersimulator
+****************************
+
+... reduziert sich dank der (specific language) Hamstersprache auf:
+
+	1.	Eingabe von ganzen Zahlen
+	
+		int liesZahl( String eingabeaufforderung );
+		
+	2.	Eingabe von ZK
+	
+		int liesZeichenkette ( String eingabeaufforderung )
+		
+		Bsp:
+		
+		...
+		String himmelsrichtung = anton.liesZeichenkette( "Wo geht es weiter? (N, O, S, W)" );
+		
+		if( himmelsrichtung.equals( "N" ) )
+			...
+		else if( himmelsrichtung.equals( "S" ) )
+			...
+			

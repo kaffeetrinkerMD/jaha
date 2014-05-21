@@ -1,0 +1,28 @@
+/*object-oriented program*/void main() {
+    
+    Hamster willi = Hamster.getStandardHamster();
+    
+    rechtsUm( willi );
+    
+    Hamster caesar = new Hamster();
+    caesar.init(0,0,Hamster.OST,0);
+    
+    rechtsUm( caesar );
+    
+    laufeKante(willi);
+    laufeKante(caesar);
+}
+/* Ende main()	********************************************************* */
+void rechtsUm( Hamster x ) {
+
+	x.linksUm();
+	x.linksUm();
+	x.linksUm();
+}
+
+void laufeKante( Hamster x ) {
+
+	while ( x.vornFrei() ) {
+		x.vor();
+	}
+}

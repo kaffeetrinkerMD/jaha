@@ -1,0 +1,6 @@
+/*object-oriented program*/
+
+void main() {
+	
+	AufseherHamster anton = new AufseherHamster( 0, 0, Hamster.OST, 0, 3 );
+}

@@ -1,0 +1,22 @@
+/*object-oriented program*/void main() {
+    
+    
+    //	willi ist der name des blauen Hamsters
+    Hamster willi = Hamster.getStandardHamster();
+    
+    //	willi heisst aber auch caesar
+    Hamster caesar = willi;
+    
+    //	der blaue Hamster macht einen Schritt nach vorn
+    caesar.vor();
+    
+    //	den Namen Caesar verwendet nun auch ein anderer Hamster
+    caesar = new Hamster();
+    caesar.init(1,1,Hamster.OST,0);
+    caesar.vor();
+    
+    //	sooooo: caesar wird für einen weiteren neuen Hamster verwendet
+    caesar = new Hamster();
+    caesar.init(3,3,Hamster.NORD,0);
+    caesar.vor();
+}

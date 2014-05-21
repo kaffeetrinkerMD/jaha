@@ -1,0 +1,24 @@
+//	Aufgabe 4.9.1
+//	mögliche Implementierung von linksUm()
+public void linksUm() {
+	this.blickrichtung = (getBlickrichtung() + 3) % 4; 
+	//	um negativen Werten aus dem Wege zu gehen
+	//	prinzipiel auch (... -3 ) % 4 möglich
+}
+
+//	Aufgabe 4.9.2
+//	mögliche Implementierung von:
+//		getReihe()
+//		getSpalte()
+//		getBlickrichtung
+public int getReihe() {
+	return this.reihe;
+}
+
+public int getSpalte() {
+	return this.spalte;
+}
+
+public int getReihe() {
+	return this.blickrichtung;
+}

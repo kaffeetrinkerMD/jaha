@@ -1,0 +1,39 @@
+/*class*/
+
+/**
+ * wir wollen mehrere Knechthamster beaufsichtigen
+ */
+
+
+
+class AufseherHamster extends Hamster {
+
+	// wir wollen mehrere Knechthamster beaufsichtigen
+	KnechtHamster [] knechte;
+
+	AufseherHamster( int reihe, int spalte, int blickrichtung, int anzahlKoerner, int anzahlKnechte ) {
+
+		//	Aufruf des K. der Elternklasse
+		super( reihe, spalte, blickrichtung, anzahlKoerner );
+
+		//	Platz für die Knechte schaffen
+		knechte = new KnechtHamster[ anzahlKnechte ];
+
+		//	Knechte erzeugen
+		for( int i = 0; i < knechte.length; i++  ) {
+
+			knechte[ i ] = new KnechtHamster( reihe, spalte, blickrichtung, anzahlKoerner );
+		}
+	}
+
+	void laufeBisZurWand() {
+
+		for( int i = 0; i < knechte . length; i++ ) {
+
+			while( knechte[ i ].vornFrei() ) {
+
+				knechte[ i ].vor();
+			}
+		}
+	}
+}

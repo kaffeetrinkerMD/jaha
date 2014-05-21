@@ -1,0 +1,15 @@
+/*class*/
+
+/**
+ * Die Klasse HamsterXXX hat einen "parameterlosen" Konstruktor,
+ */
+
+class HamsterXXX extends Hamster {
+
+	int fsk = 0;
+	
+	HamsterXXX() {
+		
+		this.fsk = 18;
+	}
+}

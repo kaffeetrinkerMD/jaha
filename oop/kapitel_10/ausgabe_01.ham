@@ -1,0 +1,13 @@
+/*object-oriented program*/
+void main() {
+        
+        Hamster anton = Hamster.getStandardHamster();
+        
+        String str1 = "Hallo Welt";
+        
+        anton.schreib( str1 );
+        
+        anton.schreib( "Bald ist Feierabend!" );
+        
+        anton.schreib( "Ich habe: " + anton.getAnzahlKoerner() + " Körner im Maul" );
+}

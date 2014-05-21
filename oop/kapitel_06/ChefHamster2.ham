@@ -1,0 +1,30 @@
+/*class*/
+class ChefHamster2 extends Hamster {
+
+	/**
+	 * eine Objektvariable als Attribut der Klasse FaulerHamster
+	 * -> Subobjekt
+	 * -> ist einen Aggregation
+	 */
+	Hamster knecht = null;
+
+	//	Konstruktoren
+	/**
+	 * Konstruktor, der diesmal nicht gleich den Sub-Hamster erzeugt
+	 */
+	ChefHamster2( ) {
+		
+		//	den Chef -  Hamster initialisieren
+		//	Chef erscheint persönlich
+		this.init(  1, 1, Hamster.OST, 0 );
+	}
+
+	/*	Ende Konstruktoren	****************************************************	 */
+	
+	//	jemand "anderes" erzeugt den "Knecht" - Hamster des Chefs
+	void stelltAn( Hamster h ) {
+		
+		this.knecht = h;
+		this.knecht.init(1, 1, Hamster.OST, 0 );
+	}
+}

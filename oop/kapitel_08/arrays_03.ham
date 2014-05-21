@@ -1,0 +1,9 @@
+/*object-oriented program*/
+void main() {
+
+	//	hier können alle abgeleiteten Objekte eingefügt werden
+	//	z.B. DrehHamtser, SammelHamster ....
+	Hamster [  ] = kaefig = new Hamster [ 10 ];
+	
+	
+}

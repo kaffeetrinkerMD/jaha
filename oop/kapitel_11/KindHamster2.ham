@@ -1,0 +1,17 @@
+/*class*/
+
+class KindHamster2 extends Hamster {
+        
+        KindHamster2( int r, int s, int b, int k ) {
+                
+                super( r, s, b, k );
+        }
+        
+        
+        void sammle( ) {
+                
+                while ( this.kornDa() ) {
+                        this.nimm();
+                }
+        }
+}

@@ -1,0 +1,44 @@
+/*object-oriented program*/
+void main() {
+
+	int anzahlReihen = Territorium.getAnzahlReihen();
+
+	//	Hamsterkäfig für exakt so viele Hamster, wie Reihen im Terr.
+	Hamster [] kaefig = new Hamster [ anzahlReihen ];
+
+	//	Hamster erzeugen (im Käfig einsperren) und im Terr. initialisieren
+
+	for( int i = 0; i < kaefig.length; i++ ) {
+
+		kaefig[ i ] = new Hamster();
+
+		//	wie kann man diesen "frischen" Hamster initialisieren?
+		/**
+		 * die Hamster stecken im Feld und deren Namen lauten jetzt:
+		 * Name des Feldes+Index -> kaefig[0], kaefig[1], ... kaefig[11]
+		 * Der Zugreiff auf Methoden eines Objektes erfolgt über den Namen des 
+		 * Hamster und der Methode:
+		 * 	als Trennzeichen wird der Punkt verwendet:
+		 * 		kaefig[ 0 ).init( ... )
+		 * 		kaefig( 1 ).vor()
+		 * 		...
+		 * 		kaefig[ 11 ].nimm()
+		 */
+		kaefig[ i ] . init( i, 0, Hamster.OST, 0, Hamster.ROT );
+
+		//	das war Niels' Lösung
+		while ( kaefig[ i ] . vornFrei() ) {
+			kaefig[ i ] . vor();
+		}
+	}
+
+	//	das war die Dozentenlösung
+	/*while ( kaefig[ 0 ] . vornFrei() ) {
+		for( int i = 0; i < kaefig.length; i++ ) {
+
+			if( kaefig[ i ]  . vornFrei() ) {
+				kaefig[ i ] . vor();
+			}
+		}
+	}*/
+}

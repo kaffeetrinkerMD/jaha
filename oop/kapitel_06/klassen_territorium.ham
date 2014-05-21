@@ -1,0 +1,38 @@
+/*object-oriented program*/
+void main() {
+
+	int terrAnzahlReihen = Territorium.getAnzahlReihen();
+	int terrAnzahlSpalten = Territorium.getAnzahlSpalten();
+	
+	//	Hamster erzeugen ( Standard )
+	Hamster anton = new Hamster( 0, 0, 	Hamster.SUED, 0);
+	Hamster berta = new Hamster( (terrAnzahlReihen - 1), 	0, Hamster.OST, 0);
+	Hamster caesar = new Hamster( (terrAnzahlReihen - 1), 	(terrAnzahlSpalten - 1), Hamster.NORD, 0);
+	Hamster dora = new Hamster(	0, (terrAnzahlSpalten - 1), Hamster.WEST, 0);
+
+	//	jeden Hamster bis zur nächsten Ecke laufen lassen
+	//	dabei die Klasse Territorium nutzen
+
+	//	anton
+	while ( anton.getReihe() != Territorium.getAnzahlReihen() - 1  ) {
+
+		anton.vor();
+	}
+
+	//	berta
+	while ( berta.getSpalte() != Territorium.getAnzahlSpalten() - 1  ) {
+
+		berta.vor();
+	}
+
+	//	caesar
+	while (  ( Territorium.getAnzahlReihen() - caesar.getReihe() ) != Territorium.getAnzahlReihen() ) {
+
+		caesar.vor();
+	}
+	//	dora
+	while ( ( Territorium.getAnzahlSpalten() - dora.getSpalte() ) != Territorium.getAnzahlSpalten()  ) {
+
+		dora.vor();
+	}
+}

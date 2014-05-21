@@ -1,0 +1,60 @@
+/*class*/
+/**
+ * @author Kaffeetrinker
+ */
+class Suche{
+	//	Klassenvariablen
+	int[] intDatenfeld;
+	String[] strDatenfeld;
+	int minIndex;
+	int maxIndex;
+	int position;
+
+	//	Konstruktor für die suche nach Integer-Werten
+	//	size ist die Datenfeldgroesse
+	//	typ für Entscheidung:
+	//		1 - Integer - Datenfeld
+	//		2 - Zeichenketten - Datenfeld
+	Suche( int size, int typ ) {
+
+		switch( typ )
+		{
+		case 1:
+			this.intDatenfeld = new int [size];
+			this.minIndex = 0;
+			this.maxIndex = this.intDatenfeld.length - 1;
+			break;
+		case 2:
+			this.strDatenfeld = new String [size];
+			this.minIndex = 0;
+			this.maxIndex = this.strDatenfeld.length - 1;
+			break;
+		}
+	}
+
+	/**
+	 * Methode intFuellen() füllt das initiierte Datenfeld-Objekt mit Werten vom Typ Integer
+	 * 
+	 * @param	j als Startwert
+	 * @param	schrittweite als Schrittweite des einzutragenden Wertes 
+	 */
+	void intFuellen( int j, int schrittweite) {
+
+		//	lokale Zaehlvariable
+		int i;
+		for(i = 0; i< this.intDatenfeld.length; i++) {
+			this.intDatenfeld[i] = j;
+			j = j + schrittweite;
+		}
+	}
+
+	/**
+	 * Methode strFuellen() füllt das initiierte Datenfeld-Objekt mit Werten vom Typ String
+	 * 
+	 * @param zeichenkette 
+	 */
+	void strFuellen( int ziel, String zeichenkette ) {
+
+		this.strDatenfeld[ziel] = zeichenkette;
+	}
+}

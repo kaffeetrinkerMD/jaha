@@ -1,0 +1,70 @@
+/*object-oriented program*/
+void main() {
+        
+        /*
+         * Fall 1
+         * Hamster karin verweist auf Objekt vom Typ Hamster
+         * 
+         * karin ist Objektvariable vom Typ Hamster und verweist (referenziert ein Objekt)
+         * auf Objekt vom Typ Hamster
+         */
+        Hamster karin = new Hamster( 0, 0, 1, 0);
+        
+        
+        /*
+         * Fall 2
+         * Hamster paul verweist auf Objekt vom Typ KindHamster1
+         * 
+         * paul ist Objektvariable vom Typ Hamster und verweist (referenziert ein Objekt)
+         * auf Objekt vom Typ KindHamster1
+         */
+        Hamster paul = new KindHamster1( 1, 0, 1, 0);
+        
+        /*
+         * Fall 3
+         * Hamster willi verweist auf Objekt vom Typ KindHamster2
+         * 
+         * willi ist Objektvariable vom Typ Hamster und verweist (referenziert ein Objekt)
+         * auf Objekt vom Typ KindHamster2
+         */
+        Hamster willi = new KindHamster2( 2, 0, 1, 0);
+        
+        /*
+         * Fall 4
+         * Hamster otto verweist auf Objekt vom Typ EnkelHamster1
+         * 
+         * otto ist Objektvariable vom Typ Hamster und verweist (referenziert ein Objekt)
+         * auf Objekt vom Typ EnkelHamster1
+         */
+        Hamster otto = new EnkelHamster1( 3, 0, 1, 0);
+        
+        /*
+         * Fall 5
+         *KindHamster1 josef verweist auf Objekt vom Typ EnkelHamster1
+         * 
+         * josef ist Objektvariable vom Typ KindHamster1 und verweist (referenziert ein Objekt)
+         * auf Objekt vom Typ EnkelHamster1
+         */
+        KindHamster1 josef = new EnkelHamster1( 4, 0, 1, 0);
+        
+        /*
+         * Fall 6
+         *KindHamster1 sepp verweist auf Objekt vom Typ Hamster
+         * 
+         * sepp ist Objektvariable vom Typ KindHamster1 und verweist (referenziert ein Objekt)
+         * auf Objekt vom Typ Hamster
+         * 
+         * --> NICHT zulässig, weil Hamster nicht abgeleitet ist von KindHamster
+         */
+        //KindHamster1 sepp = new Hamster( 5, 0, 1, 0);
+        
+        /*
+         * Fall 7
+         * KindHamster1 gisela verweist auf Objekt vom Typ KindHamster2
+         * 
+         * gisela ist Objektvariable vom Typ KindHamster1 und verweist (referenziert ein Objekt)
+         * auf Objekt vom Typ KindHamster2
+         * --> NICHT zulässig, weil keine direkte Vererbungshierarchie
+         */
+        //KindHamster1 gisela = new KindHamster2( 6, 0, 1, 0);
+}

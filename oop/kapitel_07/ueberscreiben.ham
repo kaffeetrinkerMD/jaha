@@ -1,0 +1,17 @@
+/*object-oriented program*/
+void main() {
+
+	MeinHamster anton = new MeinHamster();
+	anton.init( 0, 0, Hamster.OST, 0  );
+	
+	UeberschreibHamster berta = new UeberschreibHamster();
+	berta.init( 1, 0, Hamster.OST, 0 );
+	
+	//	anton ruft "sein" sammle() auf...
+	anton.sammle();
+	anton.vor();
+	
+	//	berta ruft "ihr" überschriebenes sammle()  der Elternklasse auf
+	berta.sammle();
+	berta.vor();
+}

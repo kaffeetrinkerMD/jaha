@@ -1,0 +1,279 @@
+/*class*/
+/*class TauschHamster extends AllroundHamster {*/
+class TauschHamster extends Hamster {
+    //	Klasseneigenschaften
+    static boolean [][] raum;
+    static int anzahlReihen;
+    static int anzahlSpalten;
+
+    //	Konstruktor
+    TauschHamster( int r, int s, int b, int k ) {
+
+        super( r, s, b, k );
+
+        //      Groesse des Territoriums ermitteln (Reihen und Spalten)
+        this.anzahlReihen = Territorium.getAnzahlReihen();
+        this.anzahlSpalten = Territorium.getAnzahlSpalten();
+
+        //	Array (raum) mit der entsprechenden Territoriumsgroesse erzeugen
+        this.raum = new boolean [this.anzahlReihen][this.anzahlSpalten];
+
+        //	Array (raum) mit den der Klassenmethode des TauschHamsters kornDa()
+        //	initialisieren
+        int aktReihe;
+        int aktSpalte;
+
+        for( aktReihe = 0; aktReihe < this.raum.length; aktReihe++ ) {
+
+            for( aktSpalte = 0; aktSpalte < this.raum[aktReihe].length; aktSpalte++ ) {
+
+                this.raum [aktReihe][aktSpalte] = kornDa( aktReihe, aktSpalte );
+            }
+        }
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode kornDa() ermittelt, ob sich auf der Kachel mindestens 1 Korn befindet
+     * - ueberschreibt die Methode kornDa() der Elternklasse
+     *  
+     * @return boolean
+     */
+    private boolean kornDa( int reihe, int spalte ) {
+
+        boolean a;	//	ist der Rueckgabewert (true/false)
+
+        if( Territorium.getAnzahlKoerner( reihe, spalte ) > 0 ) {
+
+            a = true;
+        } else {
+
+            a= false;
+        }
+
+        return a;
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode sammleRaum() sammelt alle Koerner ein, die sich auf den Kacheln
+     * des Territoriums befinden
+     * 
+     * @return void
+     */
+    public void sammleRaum() {
+
+        int reihe;
+
+        //	aeussere Schleife
+        for( reihe = 0; reihe < this.raum.length; reihe++ ) {
+
+            //	innere Schleife (sammelt alle Koerner auf den Kacheln der Reihe ab)
+            this.sammleReihe( reihe );
+
+            //	Wechsel zur naechsten Reihe
+            this.naechsteReihe( reihe );
+        }
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode legeRaum() laesst den Hamster auf allen vormals freien Kacheln
+     * ein Korn auslegen
+     * 
+     * @return void
+     */
+    public void legeRaum() {
+
+        int reihe;
+
+        //	aeussere Schleife
+        for( reihe = 0; reihe < this.raum.length; reihe++ ) {
+
+            //	innere Schleife (sammelt alle Koerner auf den Kacheln der Reihe ab)
+            this.legeReihe( reihe );
+
+            //	Wechsel zur naechsten Reihe
+            this.naechsteReihe( reihe );
+        }
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode naechsteReihe() laesst den Hamster zur naechsten Reihe wechseln
+     * 
+     * @return void
+     */
+    private void naechsteReihe( int aktReihe ) {
+
+        //	Pruefung, ob sich im Territorium (Array raum) noch eine Reihe befindet
+        //	wenn ja, erfolgt der Wechsel, abhaengig von der aktuellen Blickrichtung
+        if( aktReihe < (this.raum.length - 1) ) {
+
+            int blickrichtung = this.getBlickrichtung();
+
+            switch (blickrichtung) 
+            {
+
+                case 1:
+
+                    this.rechtsUm();
+                    this.vor();
+                    this.rechtsUm();
+                    break;
+                case 3:
+
+                    this.linksUm();
+                    this.vor();
+                    this.linksUm();
+                    break;
+            }
+        }
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode sammleReihe() sammelt alle Koerner ein, die sich auf den Kacheln
+     * der aktuellen Reihe befinden
+     * 
+     * Fallunterscheidung abhaengig von der aktuellen Blickrichtung
+     * 
+     * @return void
+     */
+    private void sammleReihe( int aktReihe ) {
+
+        int spalte;
+        int blickrichtung = this.getBlickrichtung();
+
+        if( blickrichtung == 3 ) {
+
+            //		zum Anfang der Reihe und um 180° drehen
+            while ( this.vornFrei() ) {
+
+                this.vor();
+            }
+
+            this.kehrt();
+        }
+
+        for( spalte = 0; spalte < this.raum[aktReihe].length; spalte++ ) {
+
+            if( this.raum[aktReihe][spalte] == true ) {
+
+                this.nimm();
+                if( this.vornFrei() ) {
+                    this.vor();    
+                }
+            } else {
+
+                if( this.vornFrei() ) {
+                    this.vor();    
+                }
+            }	//	Ende if-Schleife
+        }	//	Ende for-Schleife
+
+
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode legeReihe()laesst den Hamster auf allen vormals freien Kacheln
+     * der aktuellen ein Korn auslegen.
+     * 
+     * Fallunterscheidung abhaengig von der aktuellen Blickrichtung
+     * 
+     * @return void
+     */
+    private void legeReihe( int aktReihe ) {
+
+        int spalte;
+        int blickrichtung = this.getBlickrichtung();
+
+        if( blickrichtung == 3 ) {
+
+            //  zum Anfang der Reihe und um 180° drehen
+            while ( this.vornFrei() ) {
+
+                this.vor();
+            }
+            this.kehrt();
+        }
+
+        for( spalte = 0; spalte < this.raum[aktReihe].length; spalte++ ) {
+
+            if( this.raum[aktReihe][spalte] == false ) {
+
+                this.gib();
+                if( this.vornFrei() ) {
+                    this.vor();    
+                }
+            } else {
+
+                if( this.vornFrei() ) {
+                    this.vor();    
+                }
+            }	//	Ende if-Schleife
+        }	//	Ende for-Schleife
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode geheZumStart() positioniert den Hamster auf der Position (0,0)
+     * mit Blickrichtung OST
+     * 
+     * @param void
+     */
+
+    public void geheZumStart() {
+
+        this.linksUm();
+
+        while ( vornFrei() ) {
+
+            vor();
+        }
+
+        this.linksUm();
+
+        while ( vornFrei() ) {
+
+            vor();
+        }
+
+        this.kehrt();
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode rechtsUm() laesst den Hamster eine Drehung um 45° in Uhrzeigerrichtung vollfuehren
+     * 
+     * @return void
+     */
+    private void rechtsUm() {
+
+        linksUm();
+        linksUm();
+        linksUm();
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Methode kehrt() laesst den Hamster eine Drehung um 180° vollfuehren
+     * 
+     * @return void
+     */
+    private void kehrt() {
+
+        linksUm();
+        linksUm();
+    }
+}

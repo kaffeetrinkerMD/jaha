@@ -1,0 +1,65 @@
+/*object-oriented program*/
+void main() {
+
+/**
+ * Eine "wilde Wolke" Hamster soll in die linke obere Ecke laufen
+ * Anschliessend wir die Klasse Territorium benutzt, um die Referenz
+ * auf alle Hamster (inc Standardhamster) zu erhalten, damit die
+ * Hamster nacheinander in die obere linke Ecke laufen
+ */
+	int maxReihen;
+	int maxSpalten;
+	
+	maxReihen = Territorium.getAnzahlReihen();
+	maxSpalten = Territorium.getAnzahlSpalten();
+	
+	//	wir verteilen zufällig im Territorium
+	int maximal = maxReihen * maxSpalten;
+	int anzahl = (int)(Math.random() * maximal) + 1;
+	
+	//	... erscheint an einer zufälligen Position
+	int reihe;
+	int spalte;
+	int blickrichtung;
+	
+	while(anzahl > 0) {
+		
+		//	Zufallswerte für die Initialisierung der neuen Hamster
+		reihe = (int)(Math.random() * maxReihen);
+		spalte = (int)(Math.random() * maxSpalten);
+		blickrichtung = (int)(Math.random() * 3);
+		
+		new Hamster( reihe, spalte, blickrichtung, 0, Hamster.ROT );
+		
+		anzahl--;
+	}
+	
+	//	jetzt sollen alle Hamster in die linke obere Ecke laufen
+	
+	Hamster [] alle = Territorium.getHamster();
+	
+	//	... und nun laufen alle nacheinander los
+	for(int i = 0; i < alle.length; i++) {
+		
+		//	dreht den Hamster nach Norden
+		while( alle[i].getBlickrichtung() != Hamster.NORD ) {
+			alle[i].linksUm();
+		}
+		
+		// ... lässt den Hamster nach Norden laufen
+		while( alle[i].vornFrei() ) {
+			alle[i].vor();
+		}
+		
+		//	... dreht den Hamster nach Westen
+		while( alle[i].getBlickrichtung() != Hamster.WEST ) {
+			alle[i].linksUm();
+		}
+		
+		//	... lässt den H. nach Westen laufen
+		while( alle[i].vornFrei() ) {
+			alle[i].vor();
+		}
+	}
+}
+        

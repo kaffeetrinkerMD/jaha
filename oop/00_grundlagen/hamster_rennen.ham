@@ -1,0 +1,26 @@
+/*object-oriented program*/void main() {
+	Hamster willi = Hamster.getStandardHamster();
+	
+	Hamster anton = new Hamster();
+	anton.init(1,0,Hamster.OST,0);
+	
+	Hamster berta = new Hamster();
+	berta.init(2,0,Hamster.OST,0);    
+	
+	Hamster caesar = new Hamster();
+	caesar.init(3,0,Hamster.OST,0);    
+	
+	Hamster dora = new Hamster();
+	dora.init(4,0,Hamster.OST,0);    
+	
+	//	das Rennen beginnt
+	//	jeder macht einen Schritt, bis einer der Hamster sein Ziel erreicht
+	while ( willi.vornFrei() ) {
+	
+		willi.vor();
+		anton.vor();
+		berta.vor();
+		caesar.vor();
+		dora.vor();
+	}
+}

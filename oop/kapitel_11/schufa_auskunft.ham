@@ -1,0 +1,14 @@
+/*object-oriented program*/
+void main() {
+
+	//	... sie erzeugen per Zufall eine Menge Hamster
+	
+	//	wir holen alle Referenzen auf die vorhandenen Hamster im Territorium
+	
+	Hamster [] feld = Territorium.getHamster();
+	
+//	wir holen alle Referenzen auf die vorhandenen Hamster einer Kachel (z.B. 2,2)
+	
+	Hamster [] feld2 = Territorium.getHamster(2,2);
+}
+        

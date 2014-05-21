@@ -1,0 +1,57 @@
+/*class*/
+/**
+ * @author Kaffeetrinker
+ * @author Teetrinker
+ */
+class Hamstersuche extends Hamster{
+	//	Klassenvariablen
+
+	//	Konstruktor
+	Hamstersuche() {
+
+	}
+
+	//	Methoden
+	/**
+	 * Methode zufallszahl()
+	 * 
+	 * @param	int max - max übernimmt einen Wert als Basis für die Berechnung
+	 * 			der Zufallszahl
+	 * 
+	 * @return integer- Wert
+	 */
+	int zufallszahl( int max ) {
+
+		return ((int)(Math.random() * (max + 1) * 3 ));
+	}
+
+
+	/**
+	 * Methode sortiereFeld()
+	 * 
+	 * @param	integer-Datenfeld (zu sortierendes Datenfeld)
+	 * 
+	 * @return	integer-Datenfeld (sortiertes Datenfeld)
+	 */
+	int [] sortiereFeld( int [] feld  ) {
+
+		//		lokale Variablen
+		int i;
+		int j;
+		int temp;
+		int test_sort;
+
+		for(i  = 1; i < feld.length; i++) {
+
+			temp = feld [ i ];
+			j = i;
+			while ( j > 0 &&  feld [ j - 1 ]  > temp ) {
+
+				feld [ j ] = feld [ j - 1 ];	// hier findet der iegentliche Tausch statt
+				j--;
+			}
+			feld [ j ] = temp;
+		}
+		return feld;
+	}
+}

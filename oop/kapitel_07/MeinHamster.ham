@@ -1,0 +1,13 @@
+/*class*/
+class MeinHamster extends Hamster {
+
+	//	die Klasse MeinHamster implementiert eine neue Methode sammle()
+	
+	void sammle() {
+		
+		if( this.kornDa()  ) {
+			
+			this.nimm();
+		}
+	}
+}

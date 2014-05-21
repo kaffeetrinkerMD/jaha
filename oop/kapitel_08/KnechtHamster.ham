@@ -1,0 +1,13 @@
+/*class*/
+
+/**
+ * 
+ */
+
+class KnechtHamster extends Hamster {
+	
+	KnechtHamster( int reihe, int spalte, int blickrichtung, int anzahlKoerner ) {
+		
+		super( reihe, spalte, blickrichtung, anzahlKoerner );
+	}
+}

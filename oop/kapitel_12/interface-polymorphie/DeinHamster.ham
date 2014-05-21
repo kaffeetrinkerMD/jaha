@@ -1,0 +1,14 @@
+/*class*/
+class DeinHamster extends MeinHamster {
+
+	/**
+	 * die Methode laufen() wird geerbt und überschrieben
+	 */
+	public void laufen() {
+
+		while(this.vornFrei()) {
+			this.gib();
+			this.vor();
+		}
+	}
+}

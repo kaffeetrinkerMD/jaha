@@ -1,0 +1,15 @@
+/*class*/
+
+class EnkelHamster1 extends KindHamster1 {
+        
+        EnkelHamster1( int r, int s, int b, int k) {
+                
+                super( r, s, b, k );
+        }
+        
+        void rechtsUm() {
+                
+                this.kehrt();
+                this.linksUm();
+        }
+}

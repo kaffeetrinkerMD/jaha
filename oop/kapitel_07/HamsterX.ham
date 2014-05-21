@@ -1,0 +1,14 @@
+/*class*/
+
+/**
+ * Die Klasse HamsterXX hat keinen "parameterlosen" Konstruktor,
+ */
+
+class HamsterX extends Hamster {
+	
+	HamsterX( int r, int s  ) {
+		
+		this.gemerkteReihe = r;
+		this.gemerkteSpalte = s;
+	}
+}

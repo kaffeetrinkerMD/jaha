@@ -1,0 +1,29 @@
+/*object-oriented program*/
+/**
+ * @author Kaffeetrinker
+ */
+void main() {
+    
+	String string_1;
+	String string_2;
+	int position_int;
+	int position_string;
+	
+	// Datenfeld (*DF) des entsprechenden Typs initieren und mit Werten füllen
+	BinaereSuche intDF = new BinaereSuche (20, 1); 
+	BinaereSuche strDF = new BinaereSuche(2, 2);
+	
+	//	Füllen des Datenfeld-Objektes (Startwert, Schrittweite)
+	intDF.intFuellen( 0, 1 );
+	
+	string_1 = "Ich bin kein Profi!";
+	string_2 = "Ich bin ein blutiger Anfänger!";
+	
+	strDF.strFuellen( 0, string_1 );
+	strDF.strFuellen( 1, string_2 );
+	
+	//	Ermitteln der Position (Indexwert) des Suchwertes
+	position_int = intDF.binaerAlgorithmusInt( 19 );
+	position_string = strDF.binaerAlgorithmusString( string_2 );
+	
+}

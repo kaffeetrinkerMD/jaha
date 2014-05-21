@@ -1,0 +1,16 @@
+/*class*/
+abstract class KindHamster extends Hamster{
+	
+	//	die Methode wird nur deklariert (der Name wird bekannt gemacht)
+	abstract void rennen();
+	
+	/**
+	 * vollständige Methoden sind auch erlaubt
+	 * diese werden von den abgeleiteten Klassen auch geerbt
+	 */
+	void rechtsUm() {
+		this.linksUm();
+		this.linksUm();
+		this.linksUm();
+	}
+}

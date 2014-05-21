@@ -1,0 +1,27 @@
+/*class*/
+
+class BobHamster extends Hamster {
+	
+	//	Standardkonstruktor, der nichts tut (weil leer)...
+	BobHamster(){
+		
+	}
+	
+	//	parametrisierter Konstruktor
+	BobHamster( int re, int sp, int br, int ak ) {
+	
+		super( re, sp, br, ak );
+	}
+	
+	//	parametrisierter Konstruktor
+	BobHamster( int re, int sp ) {
+		
+		super(re, sp, Hamster.SUED, 1);
+	}
+	
+	//	parametrisierter Konstruktor
+	BobHamster( Hamster kopierVorlage ) {
+		
+		super( kopierVorlage );
+	}
+}

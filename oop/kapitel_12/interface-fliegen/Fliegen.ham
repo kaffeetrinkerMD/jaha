@@ -1,0 +1,6 @@
+/*class*/
+interface Fliegen{
+	
+	public void fliegen();
+	public void abstuerzen();
+}

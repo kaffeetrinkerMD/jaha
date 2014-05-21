@@ -1,0 +1,5 @@
+Arrays (Datenfelder)
+----------------------------
+Sortierverfahren:
+
+-	Bubblesort -> de.wikipedia.org/wiki/Bubblesort	

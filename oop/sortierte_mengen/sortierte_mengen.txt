@@ -1,0 +1,18 @@
+Suchalgorithmen
+***************
+
+Das Suchen in sortierten Mengen ist eine grundlegende Aufgabenstellung der Programmierung.
+
+1.  Sequentielle Suche
+______________________
+-   durchsucht eine sortierte Menge (Datenfeld) vom ersten bis zum letzten Element.
+-   Ergebnis der Suche ist die Position des gesuchten Elementes innerhalb des Datenfeldes
+-   bei nichterfolgreicher Suche ist der Rückgabewert -1
+
+
+2.  Binäre Suche
+________________
+
+
+GIT
+http://git-scm.com/book/de

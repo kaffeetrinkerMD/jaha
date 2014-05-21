@@ -1,0 +1,10 @@
+/*class*/
+class MeinHamster extends Hamster implements Beweglich {
+	
+	public void laufen() {
+		
+		while(this.vornFrei()) {
+			this.vor();
+		}
+	}
+}

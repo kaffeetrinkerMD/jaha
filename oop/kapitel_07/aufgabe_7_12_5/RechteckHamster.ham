@@ -1,0 +1,93 @@
+/*class*/
+class RechteckHamster extends AllroundHamster {
+
+	int maxBreite = maxBreite();
+	int maxHoehe = maxHoehe();
+	
+	//	Konstruktor
+	RechteckHamster( int r, int s, int b, int k ) {
+
+		//	Hamster initiieren
+		super( r, s, b, k );
+	}
+
+	void zeichne() {
+		
+		int i = 2;
+
+		while ( i > 0 ) {
+			
+			maxBreite = maxBreite();
+			maxHoehe = maxHoehe();
+			
+			zeichneBreite( maxBreite );
+			
+			rechtsUm();
+			vor();
+
+			zeichneHoehe( maxHoehe );
+			
+			vor();
+			rechtsUm();
+			
+			i--;
+		}
+	}
+
+	//	ermitteln der maximalen Breite des Rechteckes
+	int maxBreite() {
+
+		// max. mögliche Breite des Rechteckes ermitteln
+		//	dabei soll li und re jeweils noch eine Kachel bis zum Hindernis frei bleiben
+		int maxBreite = territoriumSpalten() - 2;
+
+		return maxBreite;
+	}
+
+	//	Ermitteln der maximalen Höhe des Rechteckes
+	int maxHoehe() {
+
+		// max. mögliche Hoehe des Rechteckes ermitteln
+		//	dabei soll oben und unten jeweils noch eine Kachel bis zum Hindernis frei bleiben
+		int maxHoehe = Territorium.getAnzahlReihen() - 4;
+
+		return maxHoehe;
+	}
+	
+	//	Territoriumsgröße ermitteln
+	//	Anzahl der Reihen
+	int territoriumReihen() {
+		
+		return Territorium.getAnzahlReihen();
+	}
+	
+	
+	//	Anzahl der Spalten
+	int territoriumSpalten() {
+		
+		return Territorium.getAnzahlSpalten();
+	}
+	
+	//	zeichne die Breite
+	void zeichneBreite( int breite ) {
+		
+		while ( breite > 0 ) {
+			gib();
+			breite--;
+			
+			if( breite > 0 )
+				vor();
+		}
+	}
+	
+	//	zeichne die Hoehe
+	void zeichneHoehe( int hoehe ) {
+		while ( hoehe > 0  ) {
+			gib();
+			hoehe--;
+			
+			if( hoehe > 0)
+				vor();
+		}
+	}
+}

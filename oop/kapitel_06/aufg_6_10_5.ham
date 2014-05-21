@@ -1,0 +1,12 @@
+/*object-oriented program*/
+void main() {
+
+	//	gib dem armen Tierchen einen Namen
+	Hamster koenig = getStandardHamster( 0, 0, Hamster.OST, 0 );
+	KluhilHamster anton = new KluhilHamster(1, 1, Hamster.NORD, 1 );
+	KluhilHamster berta = new KluhilHamster(3, 3, HamsterSUED, 1  );
+	KluhilHamster caesar = new KluhilHamster(5, 5, Hamster.OST, 1  );	
+	KluhilHamster dora = new KluhilHamster(7, 7, Hamster.WEST, 1  );
+		
+	
+}

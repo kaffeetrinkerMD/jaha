@@ -1,0 +1,45 @@
+/*object-oriented program*/
+/*
+ * Territorium unbekannter Größe, keine Mauern
+ * keine Körner im Territorium vorhanden
+ * Standardhamster "chef" ist zufällig in seinem Terr. plaziert, zufällige Blickrichtung
+ * - auf seiner Kachel wird ein "Vertretungs"-Hamster initiiert
+ * - dieser soll vertretungsweise zur linken, oberen Kachel laufen
+ * - abweichend ist auch die Angabe anderer Start-/Zielkoordinaten möglich
+ * - Territorium muss nat. ensprechend groß sein
+ */
+void main() {
+	
+	//	Variablen
+	int zielReihe = 0;
+	int zielSpalte = 0;
+	
+	int aktReiheV = 0;
+	int aktSpalteV = 0;
+	int aktBlickV = 0;
+	
+	//	Standardhamster initialisieren
+	Hamster chef = Hamster.getStandardHamster();
+	/*chef.init(8, 7, Hamster.SUED, 0);*/
+	
+	//	Vertretungshamster auf Position von Standardhamster erzeugen
+	VertretungsHamster karl;
+	karl = new VertretungsHamster();
+
+	aktReiheV = chef.getReihe();
+	aktSpalteV = chef.getSpalte();
+	aktBlickV = chef.getBlickrichtung();
+	
+	karl.init( aktReiheV, aktSpalteV, aktBlickV, 0);
+	
+	//karl.aendereBlickrichtung( 0 );
+	karl.aendereBlickZumZielReihe( aktReiheV, zielReihe );
+	
+	karl.laufeReihe( zielReihe );
+	
+	//karl.aendereBlickrichtung( 3 );
+	karl.aendereBlickZumZielSpalte( aktSpalteV, zielSpalte );
+	
+	karl.laufeSpalte( zielSpalte );
+	
+}

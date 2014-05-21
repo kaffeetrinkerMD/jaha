@@ -1,0 +1,36 @@
+/*object-oriented program*/
+void main() {
+
+    /**
+     * Deklarationen
+     */
+    FIFOSpeicher fifo;
+    LIFOSpeicher lifo;
+    RINGSpeicher ring;
+    Integer [] dimension;
+    Integer [] wert;
+
+    /**
+     * Initialisieren von Objekten
+     */
+    dimension = new Integer[1];
+    wert = new Integer[1];
+
+    dimension[0] = 5;
+    
+    /**
+     * Initialisierung der Speicherobjekte
+     * FIFOSpeicher
+     * LIFOSpeicher
+     * RINGSpeicher
+     */
+    fifo = new FIFOSpeicher( dimension[0] );
+    lifo = new LIFOSpeicher( dimension[0] );
+    ring = new RINGSpeicher( dimension[0] );
+
+    wert[0]=(int)(Math.random()*(dimension[0] +10));
+
+    fifo.addAll(wert[0]);
+    lifo.addAll(wert[0]);
+    ring.addAll(wert[0]);
+}

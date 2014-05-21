@@ -1,0 +1,90 @@
+Vererbung
+	-	das Konzept der Vererbung ist ein zentrales Konzept der OOP
+	-	bei der V. erbt die Kindklasse zunächst einmal alle Eigenschaften und Methoden
+		der Elternklasse, kann diese unter Umständen aber nicht benutzen (Zugriffsmodifizierer)
+	-	Begriffe/Synonyme: Eltern-/Kindklasse, Typ/Subtyp, Basisklasse/abgeleitete Klasse
+		Generlalisierung/Spezialisierung
+	-	Konzept der Vererbung schliesst ein, dass in der Veerbungshierarchie Funktionalität:
+			-	unverändert wieder verwendet werden kann
+			-	hinzugefügt werden kann
+			-	überladen werden kann
+			-	überschrieben werden kann (dynamisches Binden, Polymorphie)
+	-	für die Vererbung nutzen wir das Schlüsselwort <extends>
+	
+Überschreiben
+	-	beim Überschreiben von Methoden wird in der abgeleiteten Klasse die Funktionalität
+		durch neue Funktionalität ersetzt
+	-	die Signatur der Methode bleibt dabei gleich
+	-	der Zugriff auf die originale Methode der Elternklasse ist mit Hilfe des Schlüssel-
+		wortes <super> möglich:
+				Bsp:
+				
+				class MeinHamster extends Hamster {
+				
+					...
+					
+					//	wir überschreiben die Mehode vor() der Basisklasse und lassen den
+					//	Hamster immer zwei Schritte vorwärts laufen
+					void vor() {
+						
+						//	mit dem Schlüsselwort <super> wird die Methoder der Elternklasse
+						//	aufgerufen
+						super.vor();
+						super.vor();
+					}
+				}
+
+Konstruktoren
+--------------------
+Regel 1:
+	->	Klasse X besitzt keinen parameterlosen Konstruktor, jedoch einen (oder mehrere)
+		Konstruktoren mit Parametern ...
+		...	---> DANN
+	->	muss Klasse Y einen Konstruktor definieren, dessen erste Anweisung im Aufruf
+		eines Konstruktors der Klasse Y sein muss
+		
+Regel 2:
+	->	Klasse X besitzt einen parameterlosen Konstruktor (Standardkonstruktor)
+		...  --> DANN ...
+	->	Klasse Y muss nicht notwendigerweise einen Konstruktor besitzen,
+	->	ruft dann den Konstruktor von X auf
+	->	Sytem (Java ... ) stellt zur Not einen Konstruktor bereit
+
+Regel 3:
+	->	Klasse X besitzt einen parameterlosen Konstruktor (Standardkonstruktor)
+		...  --> DANN ...
+	->	Klasse Y besitzt einen Konstruktor, dessen erste Anweisung aber nicht der
+		Aufruf des Konstruktors der Klasse X ist.
+	->	der parameterlose Konstruktur der Klasse X wird automatisch aufgerufen
+	
+Klassenattribute
+-----------------------
+	-	sind Eigenschaften von Klassen
+	-	werden mit dem Schlüsselwort gekennzeichnet
+	-	existieren pro Klasse (und für alle Unterklassen) nur einmal
+	-	alle Objekte der Klassen und der Unterklassen können darauf zugreifen
+	-	es erfolgt keine Vererbung, nur der Zugriffsraum wird auf die abgeleiteten
+		Klassen erweitert
+	-	Klassenattribute werden demzufolge immer mit dem Klassennamenen aufge-
+		rufen, in der sie deklariert wurden:
+		
+		Bsp:
+		
+			class xyz() {
+				static attribut = a;
+				
+				void function() {
+				
+					xyz.attribut = b;
+				}
+			}
+				
+
+Schlüsselwort <final>
+------------------------------
+	-	mit ~ werden Konstanten definiert
+	-	~ vor dem Schlüsselwort <class> verhindert die Möglichkeit der Vererbbarkeit
+		der Klasse -- (eigentlich nicht sinnvoll; widerspricht dem Prinzip der OOP)
+	-	~ vor einer Methode: Methode kann nicht mehr überschrieben werden (vlt gut,
+		um Programmierfehlern vorzubeugen)
+	-	 

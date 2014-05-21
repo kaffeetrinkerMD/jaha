@@ -1,0 +1,23 @@
+/*object-oriented program*/
+void main() {
+/**
+ * wir setzen auf die plymorphen Hamster
+ */
+
+	Wettlauf02Eltern[] race = new Wettlauf02Eltern[3];
+	
+	race[0] = new Wettlauf02Eltern();
+	race[0].init(0,0,Hamster.OST,0);
+	
+	race[1] = new Wettlauf02Kind();
+	race[1].init(1,0,Hamster.OST,100);
+	
+	race[2] = new Wettlauf02Enkel();
+	race[2].init(2,0,Hamster.OST,100);
+	
+	//	Polymorphie und dynamisches Binden
+	race[0].rennen();
+	race[1].rennen();
+	race[2].rennen();
+}
+        

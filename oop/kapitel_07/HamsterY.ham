@@ -1,0 +1,15 @@
+/*class*/
+
+/**
+ * der Aufruf des Konstruktors von Klasse HamsterX muss die erste anweisung des
+ * Konstruktors der Klasse HamsterY sein
+ */
+
+class HamsterY extends HamsterX {
+
+	HamsterY( int a, int b ) {
+		
+		super( a, b );
+		this.init( a, b, Hamster.OST, 1 );
+	}
+}

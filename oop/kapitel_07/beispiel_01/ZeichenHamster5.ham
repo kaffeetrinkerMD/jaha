@@ -1,0 +1,27 @@
+/*class*/
+class ZeichenHamster5 extends ZeichenHamster {
+	
+	//	Konstruktor
+	ZeichenHamster5( int r, int s ) {
+		
+		//	hier wird der Konstruktor der Basisklasse ZeichenHamster aufgerufen
+		//	Konstruktor-Regel 1 bei der Vererbung 
+		super( r, s );
+	}
+	
+	//	Auslegemethode -> zeichne();
+	void zeichne() {
+		
+		//	wir überschreiben die Methode zeichne()
+		
+		int anzahl = 5;
+		
+		while ( anzahl > 0 ) {
+			
+			//	die Methode legeKachelaus() wird geerbt von der Basisklasse ZeichenHamster
+			this.legeKachelAus();
+			vor();
+			anzahl--;
+		}
+	}
+}

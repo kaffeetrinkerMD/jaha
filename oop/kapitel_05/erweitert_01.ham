@@ -1,0 +1,39 @@
+/*object-oriented program*/void main() {
+
+	
+	//	der blaue Hamster bekommt einen Namen
+	Hamster willi = Hamster.getStandardHamster();
+	
+	//	wir erzeugen eine neuen KluhilHamster
+	KluhilHamster hilmar;
+	
+	//	wir erzeugen einen neuen kluhilHamster
+	hilmar = new KluhilHamster();
+	
+	//	wir plazieren hilmar auf dem Territorium
+	hilmar.init(1, 1, Hamster.OST, 1000);
+	
+	//	let's go
+	willi.vor();	//	willi kann es sowieso
+	hilmar.vor();	//	hilmar kann es auch, weil er ein Hamster ist
+	
+	willi.linksUm();	//	will kann es sowieso
+	hilmar.linksUm();	//	hilmar kann es auch, weil er ein Hamster ist
+	
+	/*willi.rechtsUm();*/	//	das kann der willi nicht
+	hilmar.rechtsUm();	//	das kann hilmar, weil er ein KluhilHamster ist
+	
+	//	sammele alle vorhandenen Körner ein
+	if( hilmar.kornDa() )
+		hilmar.sammle();
+	
+	//	lege alle gesammelten Körner ab
+	hilmar.ablegen();
+	
+	//	und noch ein KluhilHamster
+	KluhilHamster max;
+	max = new KluhilHamster();
+	max.init(3, 3, Hamster.NORD, 0);
+	
+	max.rechtsUm();
+}

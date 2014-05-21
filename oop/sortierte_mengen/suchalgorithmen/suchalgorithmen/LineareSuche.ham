@@ -1,0 +1,55 @@
+/*class*/
+/**
+ * @author Kaffeetrinker
+ */
+class LineareSuche extends Suche{
+
+	LineareSuche( int size, int typ ) {
+		super( size, typ );
+	}
+
+
+
+	/**
+	 * Methode lineareSuche() sucht den Indexwert (Position) eines bestimmten Suchwertes
+	 * 
+	 * @param	int wert als Suchwert im Datenfeld
+	 * 
+	 * @return	Indexwert (Position) des Suchwertes
+	 * @return	-1, wenn der Suchwert nicht im Datenfeld vorhanden ist
+	 */
+	int lineareSuche( int suchwert ) {
+
+		//	lokale Zaehlvariable
+		int i;
+		
+		for( i = 0; i < this.intDatenfeld.length; i++ ){
+			if(this.intDatenfeld[i] == suchwert) {
+				
+				return i;	
+			}
+		}
+		return -1;
+	}
+
+	/**
+	 * Methode lineareSuche() sucht den Indexwert (Position) eines bestimmten Suchwertes
+	 * 
+	 * @param	String zeichenkette als Suchwert im Datenfeld
+	 * 
+	 * @return	Indexwert (Position) des Suchwertes
+	 * @return	-1, wenn der Suchwert nicht im Datenfeld vorhanden ist
+	 */
+	int lineareSuche( String zeichenkette ) {
+
+		//	lokale Zaehlvariable
+		int i;
+		for( i = 0; i < this.strDatenfeld.length; i++ ){
+			if(this.strDatenfeld[i] == zeichenkette) {
+
+				return i;	
+			}
+		}
+		return -1;
+	}
+}

@@ -1,0 +1,25 @@
+/*object-oriented program*/
+void main() {
+
+	//	gib dem armen Tierchen einen Namen
+	OrientierungsHamster anton = new OrientierungsHamster(5, 5 );
+	OrientierungsHamster berta = new OrientierungsHamster(2, 2 );
+	OrientierungsHamster caesar = new OrientierungsHamster(2, 8 );	
+		
+	//	schau, ob rechts oder links frei ist
+	if ( anton.rechtsFrei()  ) {
+		anton.linksUm();
+		anton.linksUm();
+		anton.linksUm();
+	}
+	
+	if ( berta.linksFrei()  ) {
+		berta.linksUm();
+	}
+	
+	if ( caesar.rechtsFrei()  ) {
+		caesar.linksUm();
+		caesar.linksUm();
+		caesar.linksUm();
+	}
+}

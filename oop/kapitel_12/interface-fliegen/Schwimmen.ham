@@ -1,0 +1,29 @@
+/*class*/
+class Schwimmen extends Hamster implements Fliegen{
+	
+	 public void fliegen() {
+		
+		while(this.vornFrei()) {
+			this.linksUm();
+			this.linksUm();
+			this.linksUm();
+			this.linksUm();
+			this.vor();
+		}
+	}
+	
+	public void schwimmen() {
+		while(this.vornFrei()) {
+			this.vor();
+			this.vor();
+			
+			this.linksUm();
+			this.linksUm();
+			
+			this.vor();
+			
+			this.linksUm();
+			this.linksUm();
+		}
+	}
+}

@@ -1,0 +1,20 @@
+/*class*/
+
+/**
+ * 
+ */
+
+
+
+class KachelHamster extends AllroundHamster{
+	
+	//	Konstruktor
+	KachelHamster() {
+		super( 0, 0, Hamster.OST, 0 );
+	}
+	
+	//	Pflicht!!
+	void geheZu( Kachel k ) {
+		
+	}
+}

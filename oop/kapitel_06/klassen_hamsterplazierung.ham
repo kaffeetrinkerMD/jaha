@@ -1,0 +1,25 @@
+/*object-oriented program*/
+void main() {
+
+	//	ermitteln der Anzahl aller Reihen im Territorium
+	int anzahlReihen = Territorium.getAnzahlReihen() - 1;
+	int anzahlSpalten =  Territorium.getAnzahlSpalten() - 1;
+
+	while ( anzahlSpalten >= 0  ) {
+
+		while ( anzahlReihen >= 0 ) {
+
+			// prüfe, ob Kachel frei ist
+			// wenn ja, erzeuge genau dort einen Hamster
+			if(  !Territorium.mauerDa( anzahlReihen, anzahlSpalten ) ) {
+
+				Hamster anton = new Hamster( anzahlReihen, anzahlSpalten, Hamster.OST, 0, Hamster.BLAU);
+			}
+
+			anzahlReihen--;
+		}
+		
+		anzahlReihen = Territorium.getAnzahlReihen() - 1;
+		anzahlSpalten--;
+	}
+}

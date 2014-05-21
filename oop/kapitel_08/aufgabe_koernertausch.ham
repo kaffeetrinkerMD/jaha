@@ -1,0 +1,23 @@
+/*object-oriented program*/
+/**
+ * Aufgabe 8.16.5
+ * -	beliebig großes, mauerloses Territorium
+ * -	gerade Anzahl an Kacheln
+ * -	auf der einen Hälfte der Kachel liegen Koerner, die anderen sind leer
+ * -	Hamster auf (0,0), keine Koerner im Maul, Blickrichtung OST
+ * -	Aufgabe: leere alle vollen Kacheln, fülle alle leeren Kacheln
+ */
+
+void main() {
+	
+	//	Tauschhamster erzeugen
+	TauschHamster anton = new TauschHamster( 0, 0, Hamster.OST, 0 );
+	
+	//	Array-Objekt leereKacheln erzeugen
+	
+	//	Array-Objekt volleKacheln erzeugen
+	
+	//	alle vollen Kacheln leeren
+	
+	//	alle leeren Kacheln füllen
+}

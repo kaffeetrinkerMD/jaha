@@ -1,0 +1,11 @@
+Subobjekte
+
+-	innerhalb von Klassen dürfen Attribute definiert werden, die auf nicht-primitive
+	Daten referenzieren
+	-	solche Attribute verweisen dann auf andere Objekte, sind also selbst
+		Objektvariablen
+-	über diese Attribute lassen sich Klassen- bzw. Objektbeziehungen herstellen
+	-	Klassen- bzw. Objektbeziehungen werden als eigenständiges Thema später
+		behandelt
+		
+-	Beispiele siehe FaulerHamster.ham

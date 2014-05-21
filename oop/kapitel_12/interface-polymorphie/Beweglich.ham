@@ -1,0 +1,5 @@
+/*class*/
+interface Beweglich {
+	public void laufen();
+	public void linksUm();
+}

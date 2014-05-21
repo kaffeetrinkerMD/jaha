@@ -1,0 +1,44 @@
+/*class*/
+
+class Wettlauf {
+      
+	//	ein Feld mit unseren Teilnehmern
+	Hamster [] teilnehmer;
+	
+	//	Markierung
+	int i = 0;
+	
+	//	Konstruktor, der die _Anzahl der Teilnehmer festlegt
+	Wettlauf( int size ) {
+		
+		this.teilnehmer = new Hamster[ size ];
+	}
+	
+	/**
+	 * 
+	 */
+	void hinzufuegen( Hamster x ) {
+		
+		if( i < this.teilnehmer.length ) {
+			
+			//	trage den neuen Teilnehmer ein
+			this.teilnehmer[ this.i ] = x;
+			this.i++;
+		}
+	}
+	
+	void lauf() {
+		
+		int j;
+		
+		// lasse nacheinander jeden TN eine Vorwärtsbewegung durchführen
+		for( j = 0; j < this.teilnehmer.length; j++ ) {
+			
+			//	jeder TN schaut nach, ob er den Schritt laufen kann
+			if( this.teilnehmer[ j ].vornFrei() ) {
+				
+				this.teilnehmer[ j ].vor();
+			}
+		}
+	}
+}

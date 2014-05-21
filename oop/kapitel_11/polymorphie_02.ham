@@ -1,0 +1,9 @@
+/*object-oriented program*/
+void main() {
+        
+        /**
+         * Demonstration "Einschränkung des Protokolls"
+         */
+        
+        Hamster paul = new KindHamster1(0, 0, Hamster.OST, 0);
+}

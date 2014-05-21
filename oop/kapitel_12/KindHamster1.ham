@@ -1,0 +1,9 @@
+/*class*/
+class KindHamster1 extends KindHamster{
+	
+	//	der Hamster ist auf Speed
+	void rennen() {
+		this.vor();
+		this.vor();
+	}
+}

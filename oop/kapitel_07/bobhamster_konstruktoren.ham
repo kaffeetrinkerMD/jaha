@@ -1,0 +1,16 @@
+/*object-oriented program*/
+void main() {
+
+	//	für anton wird der Standardkonstruktor verwendet
+	BobHamster anton = new BobHamster();
+	
+	//	für berta wird der Konstruktor mit Reihe, Spalte, Blickrchihtung
+	//	und Körnern verwendet
+	BobHamster berta = new BobHamster( 1, 1, Hamster.SUED, 0 );
+	
+	//	für caesar wird der Konstruktor mit Reihe und Spalte verwendet
+	BobHamster caesar = new BobHamster( 2, 2 );
+	
+	//	für dora wird der Konstruktor mit der Kopiervorlage verwendet
+	BobHamster dora = new BobHamster( caesar );
+}

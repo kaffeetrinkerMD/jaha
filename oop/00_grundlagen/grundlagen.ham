@@ -1,0 +1,47 @@
+/*object-oriented program*/void main() {
+    //	wir geben unserem blauen Hamster einen Namen
+    //	Objektvariable vom Typ Hamster
+    
+    // die Klasse Hamster stell eine Funktion (Methode) bereit,
+    //	die eine Referenz auf den Standardhamster (blau) liefert
+    Hamster willi = Hamster.getStandardHamster();
+    /*
+    Hamster paul = willi;
+    Hamster clara, doerte;
+    
+    clara = willi;
+    doerte = clara;
+    
+    //	willi, paul, clara und doerte sind alle ein und der selbe Hamster
+    clara.vor();
+    willi.linksUm();
+    doerte.vor();
+    paul.vor();
+    */
+    
+    //	wir basteln uns einen neuen Hamster
+    //	das Schlüsselwort new wird verwendet, um ein neues Objekt zu erzeugen
+    //	das Objekt einer Klasse wird instanziiert
+    Hamster bauer = new Hamster();		// Definition der Variablen (Wertzuweisung)
+    
+    //	Objekt bauer ist bereits vorhanden, muss jedoch erst noch initialisiert werden
+    //	wir initialisieren den Hamster und stellen ihn auf das Territorium
+    //	Reihe, Spalte, Blickrichtung und anzahl der Körner im Maul
+    //	sind die wichtigen (notwendigen Werte)
+    
+    //	init(Reihe, Spalte, Blickrichtung, Anzahl der Körner)
+    bauer.init( 0, 0, Hamster.OST, 0);
+    
+    //	auch mögliche Notation
+	//	bauer.init( 0, 0, 1, 0);
+	
+	Hamster clara, paul, paula;		//	Deklaration der Variablen (Reservierung; Typzuweisung, jedoch keine Werte)
+	
+	clara = new Hamster();
+	paul = new Hamster();
+	paula = new Hamster();
+	
+	clara.init(2,2,Hamster.OST,0);
+	paul.init(3,3,Hamster.WEST,0);
+	paula.init(4,4,Hamster.SUED,0);
+}

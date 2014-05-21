@@ -1,0 +1,58 @@
+/*object-oriented program*/
+/**
+ *	Der Hamster soll das Territorium "scannen"
+ *	und zu der Kachel mit der größten Anzahl Koerner laufen
+ */
+
+void main() {
+
+	//	Ein mehrdimensionales Feld, dass für jede Kachel
+	//	die Anzahl Koerner speichert
+
+	int anzahlReihen = Territorium.getAnzahlReihen();
+	int anzahlSpalten = Territorium.getAnzahlSpalten();
+
+	//	Das mehrdimentionale Feld ist exakt so groß wie das Territorium
+	int [] [] koernerAnzahl = new int [ anzahlReihen ] [ anzahlSpalten ];
+
+	//	Territorium "einscannen"
+	//	Werden grundsätzlich durch zwei verschachtelte Schleifen erreicht!
+	//	Für jede Dimension eine Schleife (hier: 1. für Reihen und 2. für Spalten)
+
+	//	äußere Schleife durchläuft alle Reihen
+	for( int r=0; r < anzahlReihen; r++ ) {
+
+		//	innere Schleife durchläuft alle Spalten
+		for( int s=0; s < anzahlSpalten; s++ ) {
+
+			koernerAnzahl[ r ] [ s ] = Territorium.getAnzahlKoerner( r, s );
+		}
+	}
+	
+	//	suche nach der Kachel mit den meisten Körnern
+	//	Initialisierung
+	int maxAnzahl = 0;
+	
+	//	... diese beiden Variablen speichern dann die Koordinaten der Kachel mit den 
+	//		meisten Körnern
+	int maxReihe = 0;
+	int maxSpalte = 0;
+	
+	for( int r = 0; r <anzahlReihen; r++ ) {
+		
+		//	jetzt die Spalte...
+		for( int s=0; s < anzahlSpalten; s++ ) {
+			
+			//	jetzt die maximale Anzahl der Körner prüfen...
+			if( koernerAnzahl [ r ] [ s ]  > maxAnzahl ) {
+				
+				//	Speichern des neuen Maximums
+				maxAnzahl = koernerAnzahl [ r ] [ s ];
+				
+				//	und Speichern der Koordinaten
+				maxReihe = r;
+				maxSpalte = s;
+			}	//	Ende if - Struktur
+		}	//	Ende innere for - Schleife
+	}	//	Ende aeussere for - Schleife
+}

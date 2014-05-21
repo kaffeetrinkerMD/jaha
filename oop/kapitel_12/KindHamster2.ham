@@ -1,0 +1,8 @@
+/*class*/
+class KindHamster2  extends KindHamster{
+	
+	//	fauler Hamster
+	void rennen() {
+		this.schreib("Ich bin faul!");
+	}
+}

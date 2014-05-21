@@ -1,0 +1,22 @@
+/*object-oriented program*/
+void main() {
+	
+	//	die Objektvariable race ist vom abstrakten Typ KindHamster 
+	KindHamster[] race = new KindHamster[3];
+	
+	race[0] = new KindHamster1();
+	race[0].init(1,0,Hamster.OST, 100);
+	
+	race[1] = new KindHamster2();
+	race[1].init(2,0,Hamster.OST, 100);
+	
+	race[2] = new KindHamster3();
+	race[2].init(3,0,Hamster.OST, 100);
+	
+	race[0].rennen();
+	race[1].rennen();
+	race[2].rennen();
+	
+	//	das hier funktioniert so nicht
+	/* KindHamster bad = new KindHamster(); */
+}

@@ -1,0 +1,35 @@
+/*class*/
+class ChefHamster extends Hamster {
+
+	/**
+	 * eine Objektvariable als Attribut der Klasse FaulerHamster
+	 * -> Subobjekt-> ist eine Komposition
+	 * 	->	weil er unzertrennlich mit dem KnechtHamster verknüpft ist
+	 */
+	Hamster knecht = null;
+
+	//	Konstruktoren
+	/**
+	 * Konstruktor, der auch gleich den Sub-Hamster erzeugt
+	 * r - Reihe / s - Spalte / b - Blickrichtung / k - Anzahl der Körner im Maul
+	 */
+	ChefHamster( ) {
+		
+		//	den Chef -  Hamster initialisieren
+		//	Chef erscheint persönlich
+		this.init(  0, 0, Hamster.OST, 0 );
+		
+		//	Chef erzeugt seinen "Knecht" - Hamster selber
+		this.knecht = new Hamster();
+		this.knecht.init( 0, 3, Hamster.OST, 0 );
+	}
+
+	/*	Ende Konstruktoren	****************************************************	 */
+	
+	void lasseKnechtLaufen() {
+		
+		if( this.knecht.vornFrei() ) {
+			this.knecht.vor();
+		}
+	}
+}

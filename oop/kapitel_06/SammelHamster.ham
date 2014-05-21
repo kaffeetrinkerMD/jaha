@@ -1,0 +1,34 @@
+/*class*/
+class SammelHamster extends Hamster {
+    
+	//	Konstruktor
+	SammelHamster() {
+		
+		this.init( 0, 0, Hamster.OST, 0 );
+	}
+	
+	//	Konstruktor mit Reihe und Spalte
+	SammelHamster( int r, int s )  {
+		
+		this.init(  r, s, Hamster.OST, 0 );
+	}
+	
+	//	Klassenattribute
+	static int gemeinsamGesammelteKoerner = 0;
+	
+	//	Instanzattribute
+	int meineGesammeltenKoerner = 0;
+	
+	//	Sammeln und mitzaehlen
+	void sammle() {
+		
+		while ( this.kornDa() ) {
+			
+			this.nimm();
+			this.meineGesammeltenKoerner += 1;
+			
+			//	und noch mal für die Klasse zählen
+			gemeinsamGesammelteKoerner +=1;
+		}
+	}
+}

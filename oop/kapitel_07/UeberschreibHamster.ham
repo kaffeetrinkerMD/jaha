@@ -1,0 +1,12 @@
+/*class*/
+class UeberschreibHamster extends MeinHamster {
+
+	//	wir überschreiben die Methode sammle()
+	
+	void sammle() {
+		
+		while ( this.kornDa() ) {
+			super.sammle();
+		}
+	}
+}

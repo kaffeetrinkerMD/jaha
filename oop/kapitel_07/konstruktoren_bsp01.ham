@@ -1,0 +1,13 @@
+/*object-oriented program*/
+void main() {
+	
+	//	anton als Objekt wird erzeugt, aber nicht initialisiert
+	Hamster anton = new Hamster();
+	
+	//	berta als Objekt wird erzeugt und initialisiert
+	Hamster berta = new Hamster( 1, 0, Hamster.OST, 0);
+	
+	//	caesar als Objekt wird erzeugt und initialisiert mit den
+	//	Eigenschaften das berta - Objektes
+	Hamster caesar = new Hamster( berta );
+}

@@ -1,0 +1,53 @@
+/*object-oriented program*/
+void main() {
+    
+    //	willi als Standardhamster verwenden
+    Hamster willi = Hamster.getStandardHamster();
+    
+    //	berta startet in der linken oberen Ecke, Blickrichtung egal
+    Hamster berta = new Hamster();
+    berta.init(0,7,Hamster.WEST,0);
+    
+	
+    
+	//	Spaltendifferenz ermitteln und Blickrichtung entsprechend ändern
+	if( spaltenDifferenz(berta, willi) > 0 ) {
+		
+		aendereBlickrichtung(berta, 1);
+	} else {
+		aendereBlickrichtung(berta, 3);
+	}
+	
+    
+    while ( berta.getSpalte() != willi.getSpalte() ) {
+    	
+    	berta.vor();
+    	
+    	if(berta.getSpalte() == willi.getSpalte()) {
+    		
+    		aendereBlickrichtung(berta, 2);
+    	}
+    }
+    
+    while ( berta.getReihe() != willi.getReihe() ) {
+    		berta.vor();
+    }
+}
+
+//	Blickrichtung gezielt ändern
+void aendereBlickrichtung( Hamster x, int y ) {
+	while ( x.getBlickrichtung() != y )
+    			x.linksUm();
+}
+
+//	Spaltendifferenz zum Ziel ermitteln
+int spaltenDifferenz( Hamster x, Hamster z) {
+	
+	return z.getSpalte() - x.getSpalte();
+}
+
+//	Reihendifferenz zum Ziel ermitteln
+int reihenDifferenz( Hamster x, Hamster z ) {
+	
+	return z.getReihe() - x.getReihe();
+}

@@ -1,0 +1,27 @@
+/*object-oriented program*/
+void main() {
+        
+        Hamster anton = Hamster.getStandardHamster();
+        
+        //      einfache Ausgaben
+        /*String str1 = "Hallo Welt";
+        
+        anton.schreib( str1 );
+        
+        anton.schreib( "Bald ist Feierabend!" );
+        
+        anton.schreib( "Ich habe: " + anton.getAnzahlKoerner() + " Körner im Maul" );*/
+        
+        //      Eingaben
+        int schritte = 0;
+        
+        do {
+                schritte = anton.liesZahl("Wie viel Schritte soll ich gehen? (1-3)");
+        } while ( schritte < 1 || schritte > 30 );
+        
+        //      ... und nun läuft er los
+        while( schritte > 0 && anton.vornFrei() ) {
+                anton.vor();
+                schritte--;
+        }
+}

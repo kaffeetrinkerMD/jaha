@@ -1,0 +1,51 @@
+/*object-oriented program*/
+void main() {
+
+        Hamster                paul     = new Hamster(0 ,0 , 1, 0);
+        KindHamster1      karl       = new KindHamster1( 1 ,0 , 1, 0);
+        KindHamster2      willi     = new KindHamster2( 2, 0, 1, 0);
+        EnkelHamster1    enkel = new EnkelHamster1( 3, 1, 1, 0 );
+
+        //      Aufruf der Prozedur irgendeineProzedur()
+        //irgendeineProzedur();
+
+        /* 1 */
+        //      Signatur der Prozedur enspricht exakt dem übergebenen Parameter
+        irgendeineProzedur(paul);
+
+
+        /* 2 */
+        //      Signatur der Prozedur enspricht nicht dem übergebenen Parameter,
+        //      ist jedoch erlaubt dank Polymorphie
+        irgendeineProzedur(karl);
+
+        /* 3 */
+        //      Signatur der Prozedur enspricht nicht dem übergebenen Parameter,
+        //      ist jedoch erlaubt dank Polymorphie
+        irgendeineProzedur(willi);
+        
+        /* 4 */
+        /*
+         * der übergebene Parameter entspricht nicht den Minimalanforderungen
+         * der Signatur der Prozedur
+         */
+        //eineAndereProzedur( paul );              //      schlägt fehl
+        
+        /* 5 */
+        /*
+         * der übergebene Parameter entspricht exakt den Minimalanforderungen
+         * der Signatur der Prozedur
+         */
+        eineAndereProzedur( enkel );            //      funktioniert
+}
+
+void irgendeineProzedur( Hamster x ) {
+        // alles, was der Hamster kan, nicht mehr...
+        x.vor();
+}
+
+void eineAndereProzedur( EnkelHamster1 x ) {
+        // etwas, was nur der enkelHamster kann...
+        x.rechtsUm();
+        
+}

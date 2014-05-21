@@ -1,0 +1,19 @@
+/*object-oriented program*/
+void main() {
+	
+	//	Hamster wird initialisiert in der Startposition zum Zeichnen
+	//	rechte untere Ecke: maxReihe - 1 und maxSpalte - 1
+	int startReihe = (Territorium.getAnzahlReihen() - 2);
+	int startSpalte = (Territorium.getAnzahlSpalten() - 2);
+	
+	/*RechteckHamster zeichner = new RechteckHamster( startReihe, startSpalte, 
+																		Hamster.WEST, 10000 );*/
+	
+	RechteckHamster zeichner = new GefuelltesRechteckHamster( startReihe, startSpalte, 
+			Hamster.WEST, 10000 );
+	
+	//	Hamster zeichnet
+	zeichner.zeichne();
+	
+	//	Hamster beendet das Zeichnen in der linken oberen Ecke
+}

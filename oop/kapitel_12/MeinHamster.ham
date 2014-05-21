@@ -1,0 +1,22 @@
+/*class*/
+class MeinHamster extends Hamster implements Vergleichbar {
+	
+	//	die Funktion vergleiche(Hamster, Hamster)
+	public int vergleiche(Hamster h1, Hamster h2) {
+		
+		if(h1.getAnzahlKoerner() > h2.getAnzahlKoerner()) {
+			return 1;
+		} else
+			if(h1.getAnzahlKoerner() < h2.getAnzahlKoerner()) {
+				return -1;
+			} else {
+				return 0;
+			}
+	}
+	
+	//	die Funktion vergleiche(Hamster)
+	public int vergleiche(Hamster h1){
+		
+		return this.vergleiche(this, h1);
+	}
+}

@@ -1,0 +1,59 @@
+/*object-oriented program*/
+void main() {
+
+        //	unsortiertes Array (Datenfeld) erzeugen
+        int [] insertionsort = new int [10];
+
+        // mit Daten füllen
+        insertionsort[0] = 2;
+        insertionsort[1] = -4;
+        insertionsort[2] = 6;
+        insertionsort[3] = 8;
+        insertionsort[4] = 100;
+        insertionsort[5] = 1;
+        insertionsort[6] = -3;
+        insertionsort[7] = 5;
+        insertionsort[8] = 7;
+        insertionsort[9] = -123;
+       
+        // Array auslesen (nur zum Testen)
+        int i = 0;
+        int test = 0;
+        for(i = 0; i < insertionsort.length; i++) {
+                test = insertionsort[i];
+        }
+
+        //	sortieren -> der eigentliche Sortiervorgang
+        /*sortiereFeld( insertionsort );*/
+
+        // sortiertes Array auslesen ( nur zum Testen im Hamstersimulator gedacht )
+        int k = 0;
+        int test_k = 0;
+        int [ ] feld_sortiert = sortiereFeld( insertionsort );
+
+        for(k = 0; k < feld_sortiert.length; k++) {
+                test_k = feld_sortiert [ k ];
+        }
+}
+
+int [] sortiereFeld( int [] feld  ) {
+
+        //		lokale Variablen
+        int i;
+        int j;
+        int temp;
+        int test_sort;
+
+        for(i  = 1; i < feld.length; i++) {
+
+                temp = feld [ i ];
+                j = i;
+                while ( j > 0 &&  feld [ j - 1 ]  > temp ) {
+
+                        feld [ j ] = feld [ j - 1 ];	// hier findet der iegentliche Tausch statt
+                        j--;
+                }
+                feld [ j ] = temp;
+        }
+        return feld;
+}

@@ -1,0 +1,36 @@
+/*object-oriented program*/
+void main() {
+	
+	MeinHamster mh = new MeinHamster();
+	mh.init(1,0,Hamster.OST,0);
+	
+	DeinHamster dh = new DeinHamster();
+	dh.init(2,0,Hamster.OST,50);
+	
+	/*MeinHamster mdh = new DeinHamster();
+	mdh.init(3,0,Hamster.OST,50);*/
+	
+	SeinHamster sh = new SeinHamster();
+	sh.init(4,0,Hamster.OST,50);
+	
+	/*mh.laufen();
+	dh.laufen();
+	mdh.laufen();
+	sh.laufen();*/
+	
+	hinUndZurueck(mh);
+	hinUndZurueck(dh);
+	hinUndZurueck(sh);
+}
+
+void hinUndZurueck(MeinHamster x) {
+	
+	while(x.vornFrei()) {
+		x.laufen();
+		
+		x.linksUm();
+		x.linksUm();
+		
+		x.laufen();
+	}
+}

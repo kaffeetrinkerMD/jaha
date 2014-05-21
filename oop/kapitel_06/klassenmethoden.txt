@@ -1,0 +1,23 @@
+Klassenmethoden
+
+-	sind Methoden, die einer Klasse zugeordnet sind und "unabhängig" von Objekten
+	(Instanzen) aufgerufen werden können
+	
+-	~ werden mit dem Schlüsselwort < static > gebildet
+
+-	der Aufruf statischer K-Methoden erfolgt unter Verwendung des Klassennamens
+
+>>>	Territorium.getAnzahlReihen()	//	ruft statische Methode ~ der Klasse 
+										Territorium auf
+										
+	allgemein: KlassenName.statischeMethode();
+	
+-	da K-Methoden "unabhängig" von konkreten Objekten verwendet werden dürfen,
+	gelten bei der Verwendung von KM folgende Regeln:
+		
+		-	in KM dürfen Sie alle statischen Klassenelemenete verwenden
+			(K-Attribute, andere Klassenmethoden)
+		-	in KM dürfen Sie nicht auf Objekteigenschaften/- methoden zugreifen
+		-	in KM darf das Schlüsselwort < this > nicht verwendet werden
+		
+		-	Literatur: docs.oracle.com/javase/tutorial/java/javaOO/classvars.html

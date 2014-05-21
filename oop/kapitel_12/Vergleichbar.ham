@@ -1,0 +1,7 @@
+/*class*/
+interface Vergleichbar {
+	
+	public int vergleiche(Hamster h1, Hamster h2);
+	
+	public int vergleiche(Hamster h1);
+}

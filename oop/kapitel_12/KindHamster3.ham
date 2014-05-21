@@ -1,0 +1,14 @@
+/*class*/
+class KindHamster3  extends KindHamster{
+	
+	//	verwirrter Hamster dreht sich erst einmal
+	void rennen() {
+		this.linksUm();
+		this.linksUm();
+		this.linksUm();
+		this.linksUm();
+		
+		vor();
+		vor();
+	}
+}

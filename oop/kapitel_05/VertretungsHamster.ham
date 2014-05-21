@@ -1,0 +1,71 @@
+/*class*/
+class VertretungsHamster extends Hamster {
+
+	//	laufe in Reihe r
+	void laufeReihe( int r ) {
+
+		while ( this.getReihe() != r ) {
+			
+			if( this.vornFrei() ) {
+				vor();
+			}
+		}
+		
+	}
+
+	//	laufe in Spalte a
+	void laufeSpalte( int s ) {
+
+		while ( this.getSpalte() != s ) {
+			
+			if( this.vornFrei() ) {
+				vor();
+			}
+		}
+	}
+
+	//	ändere die Blickrichtung auf Richtung ...
+	void aendereBlickrichtung( int b ) {
+
+		while ( getBlickrichtung() != b ) {
+
+			linksUm();
+		}
+	}
+
+//	aendere die Blickrichtung in der Reihe in Richtung Ziel
+	void aendereBlickZumZielReihe( int start, int ziel ) {
+
+		if( start > ziel ) {
+
+			while ( this.getBlickrichtung()  != Hamster.NORD ) {
+				
+				this.linksUm();
+			}
+		} else if( start < ziel ) {
+			
+			while ( this.getBlickrichtung()  != Hamster.SUED ) {
+				
+				this.linksUm();
+			}
+		}
+	}
+
+	//	aendere die Blickrichtung in der Spalte in Richtung Ziel
+	void aendereBlickZumZielSpalte( int start, int ziel ) {
+		
+		if( start > ziel ) {
+
+			while ( this.getBlickrichtung()  != Hamster.WEST ) {
+				
+				this.linksUm();
+			}
+		} else if( start < ziel ) {
+			
+			while ( this.getBlickrichtung()  != Hamster.OST ) {
+				
+				this.linksUm();
+			}
+		}
+	}
+}

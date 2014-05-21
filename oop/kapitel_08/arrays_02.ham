@@ -1,0 +1,41 @@
+/*object-oriented program*/
+void main() {
+
+	//	ein Feld der Größe x  für ganze Zahlen
+	int [ ] datenfeld = new datenfeld [ 10 ];
+	
+	//	Initialisierung des ganzzahligen Feldes - mit Feldlänge als Obergrenze
+	//	mit einer aufsteigenden Zahlenfolge (0 ... 9)
+	int i = 0;
+	while ( i < datenfeld.length ) {
+
+		datenfeld [ i ] = i;
+		i++;
+	}
+	
+	//	Gültigkeitsbereich einer Variablen kann durch Anweisungsblock gesetzt werden
+	{
+		int spalte = 0;
+		spalte++;
+	}
+	
+	//	Gleichwertigkeit zwischen for und while
+	/**
+	 * beide Schleifen sind gleichwertig
+	 * der Gültigkeitsbereich der Variablen wird in der for-Schleife im Kopf begrenzt,
+	 * in der while-Schleife durch Setzen eines Anweisungsblockes
+	 */
+	for( int spalte = 0; spalte < 10; spalte++ ) {
+		
+		//	...
+	}
+	
+	
+	{
+		int spalte = 0;
+		while ( spalte < 10 ) {
+			// ...
+			spalte++;
+		}
+	}
+}

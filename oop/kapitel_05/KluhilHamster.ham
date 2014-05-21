@@ -1,0 +1,51 @@
+/*class*/
+/**
+ * die Klasse "KluhilHamster" erweitert (extends) die Klasse Hamster
+ * 
+ * ==> der KluhilHamster kann "alles", was ein Hamster kann
+ * 
+ */
+class KluhilHamster extends Hamster {
+
+	//	KluhilHamster können ab sofort mitzählen, wieviele Körner
+	//	eingesammelt worden sind
+	int gesammelteKoerner = 0;
+
+	//	neue Methode (Verhalten)
+	void sammle() {
+
+		if( this.kornDa() ) {
+
+			this.nimm();
+			this.gesammelteKoerner += 1;
+		}
+	}
+
+	//	neue Methode: gib zurück, wieviele Körner gesammelt wurden
+	int getGesammelteKoerner() {
+
+		return this.gesammelteKoerner;
+	}
+	
+	void ablegen() {
+		
+		while ( this.gesammelteKoerner > 0 ) {
+			
+			this.gib();
+			this.gesammelteKoerner = this.gesammelteKoerner - 1;
+		}
+	}
+
+	//	KluhilHamster können ab sofort auch rechtsUm();
+	void rechtsUm() {
+		this.linksUm();
+		this.linksUm();
+		this.linksUm();
+	}
+
+	//	KluhilHamster können ab sofort auch kehrt();
+	void kehrt() {
+		this.linksUm();
+		this.linksUm();
+	}
+}

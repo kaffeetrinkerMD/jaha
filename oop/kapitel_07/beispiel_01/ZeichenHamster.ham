@@ -1,0 +1,26 @@
+/*class*/
+class ZeichenHamster extends Hamster {
+	
+	//	Konstruktor
+	ZeichenHamster( int r, int s ) {
+		
+		super( r, s, Hamster.NORD, 120 );
+	}
+	
+	//	Auslegemethode -> zeichne();
+	void zeichne() {
+		//	dieser Hamster legt nix aus (0)
+	}
+	
+	//	die Methode zum Auslegen von 12 Körnern je Kachel
+	void legeKachelAus() {
+		
+		int zahl = 12;
+		
+		while ( zahl > 0 ) {
+			
+			this.gib();
+			zahl--;
+		}
+	}
+}

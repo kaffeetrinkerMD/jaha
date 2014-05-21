@@ -1,0 +1,18 @@
+/*object-oriented program*/
+void main() {
+
+	AuskunftsHamster schufa = new AuskunftsHamster();
+	
+	schufa.init( 0, 0, Hamster.OST, 1234 );
+	
+	/*
+	 * in Java wird toString() immer dann automatisch aufgerufen,
+	 * wenn das Objekt in einem Zeichenkettenkontext verwendet wird
+	 */
+	schufa.schreib( schufa.toString() );
+	
+	String test = "test >>>" + schufa;
+	
+	schufa.schreib( test );
+}
+        
